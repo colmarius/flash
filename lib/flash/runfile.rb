@@ -1,0 +1,16 @@
+require 'flash'
+
+class Flash::Runfile
+
+  def initialize(filename=nil)
+    load(filename) if filename
+  end
+
+  def [](name)
+    @groups[name]
+  end
+
+  def load(filename)
+    @groups = YAML.load_file(filename)
+  end
+end
