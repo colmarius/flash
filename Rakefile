@@ -10,7 +10,7 @@ task :build do
 end
 
 task :release => :build do
-  system "gem push flash-#{Flash::VERSION}"
+  system "gem push flash-#{Flash::VERSION}.gem"
 end
 
 task :default => :spec
