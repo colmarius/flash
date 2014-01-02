@@ -21,4 +21,20 @@ Usage: run [options] group
     -h, --help                       Help documentation
 ```
 
+# Example
+
+```bash
+> cd example
+> run -c ls projects
+salsa> ls
+cubana
+
+dancing> ls
+bouncing
+
+school> ls
+fun
+
+```
+
 TODO: write detailed description
