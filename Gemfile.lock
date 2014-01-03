@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    flash (0.0.2)
+    flash (0.0.3)
 
 GEM
   remote: https://rubygems.org/
