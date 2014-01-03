@@ -5,6 +5,7 @@ class Flash::Runfile
 
   def initialize(filename=nil)
     load(filename) if filename
+    @groups = []
   end
 
   def [](name)
