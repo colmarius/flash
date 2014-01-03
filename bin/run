@@ -32,12 +32,12 @@ optparse = OptionParser.new do |opts|
   opts
 end
 
+optparse.parse!
+
 if ARGV.empty?
   puts "Group name is missing."
   puts optparse ; exit
 end
-
-optparse.parse!
 
 group = ARGV[0]
 

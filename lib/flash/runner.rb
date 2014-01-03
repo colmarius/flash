@@ -6,6 +6,8 @@ class Flash::Runner
   attr_accessor :debug, :color, :dir_name, :group
 
   def initialize(options = {}, group)
+    raise "Missing required group parameter." unless group
+
     @options = options
     @group = Flash::Runfile.new('Runfile')[group]
   end

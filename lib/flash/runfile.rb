@@ -8,11 +8,11 @@ class Flash::Runfile
     @groups = []
   end
 
-  def [](name)
-    @groups[name]
+  def [](name=nil)
+    @groups[name] if name
   end
 
   def load(filename)
-    @groups = YAML.load_file(filename)
+    @groups = YAML.load_file(filename) if File.exists?(filename)
   end
 end
