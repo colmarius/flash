@@ -3,9 +3,10 @@ require 'yaml'
 
 class Flash::Runfile
 
+  attr_reader :groups
+
   def initialize(filename=nil)
     load(filename) if filename
-    @groups = []
   end
 
   def [](name=nil)
