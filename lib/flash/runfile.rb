@@ -1,4 +1,5 @@
 require 'flash'
+require 'yaml'
 
 class Flash::Runfile
 
