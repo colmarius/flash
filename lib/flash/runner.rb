@@ -3,13 +3,14 @@ require 'flash/runfile'
 
 class Flash::Runner
   attr_reader :options
-  attr_accessor :debug, :color, :dir_name, :group
+  attr_accessor :debug, :color, :dir_name, :runfile, :group
 
   def initialize(options = {}, group)
     raise "Missing required group parameter." unless group
 
     @options = options
-    @group = Flash::Runfile.new('Runfile')[group]
+    @runfile = Flash::Runfile.new('Runfile')
+    @group = group
   end
 
   def pwd
@@ -57,11 +58,15 @@ class Flash::Runner
     "#{ dir_name }> "
   end
 
+  def group_dirs
+    runfile[group]
+  end
+
   def start
     list_recipes and exit if options[:list_recipes]
 
     self.debug = options[:debug]
-    group.each do |dir_name|
+    group_dirs.each do |dir_name|
       change_color!
       self.dir_name = dir_name
       run "cd #{ pwd }/#{ dir_name }", false
