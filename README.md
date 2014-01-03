@@ -37,4 +37,8 @@ fun
 
 ```
 
+# Notes
+
+This is a project to level up my gem skills.
+
 TODO: write detailed description
