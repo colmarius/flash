@@ -1,0 +1,13 @@
+PATH
+  remote: ../
+  specs:
+    flash (0.0.3)
+
+GEM
+  specs:
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  flash!
