@@ -1,19 +1,11 @@
 require 'flash'
 require 'yaml'
+require 'delegate'
 
-class Flash::Runfile
-
-  attr_reader :groups
-
+class Flash::Runfile < SimpleDelegator
   def initialize(filename=nil)
-    load(filename) if filename
-  end
+    data = filename ? YAML.load_file(filename)  : {}
 
-  def [](name=nil)
-    @groups[name] if name
-  end
-
-  def load(filename)
-    @groups = YAML.load_file(filename) if File.exists?(filename)
+    super(data)
   end
 end
