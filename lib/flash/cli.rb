@@ -14,10 +14,6 @@ class Flash::CLI
         options[:commands] = command.split(';').map(&:strip)
       end
 
-      opts.on("-d", "--debug", "Debug: print each command result") do |d|
-        options[:debug] = d
-      end
-
       opts.on("-r", "--recipe recipe", "Run registered recipe if present") do |recipe|
         options[:recipe] = recipe
       end

@@ -5,7 +5,6 @@ class Flash::Runner
 
   attr_reader :options
 
-  attr_accessor :debug
   attr_accessor :color
   attr_accessor :dir_name
   attr_accessor :runfile
@@ -26,7 +25,6 @@ class Flash::Runner
   def run(command, verbose=true)
     say "#{ prompt }#{ command }" if verbose
     system "cd #{ app_dir } && #{ command }"
-    say "[Debug] Result: #{ $?.inspect }" if verbose && debug
   end
 
   def recipes
@@ -71,7 +69,6 @@ class Flash::Runner
   def start
     list_recipes and exit if options[:list_recipes]
 
-    self.debug = options[:debug]
     group_dirs.each do |dir_name|
       change_color!
       self.dir_name = dir_name
