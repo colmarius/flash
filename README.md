@@ -23,8 +23,27 @@ Usage: run [options] group
 
 # Example
 
+
 ```bash
 > cd example
+```
+
+Suppose we have a `Runfile` inside the `example` folder with content:
+
+```bash
+projects:
+  - salsa
+  - dancing
+  - school
+
+some:
+  - salsa
+  - school
+```
+
+Now we can use the `run` command to execute same commands on a subset of folders.
+
+```bash
 > run -c ls projects
 salsa> ls
 cubana
