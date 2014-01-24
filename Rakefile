@@ -1,16 +1,8 @@
-require "rspec/core/rake_task"
+$:.unshift File.expand_path("../lib", __FILE__)
+require 'flash'
 
-RSpec::Core::RakeTask.new do |task|
-  task.name = 'spec'
-  task.rspec_opts = ['-c',' -f', 'd']
+require 'bundler/setup'
+
+Dir[File.expand_path('../tasks/*.rake', __FILE__)].each do |task|
+  load task
 end
-
-task :build do
-  system "gem build flash.gemspec"
-end
-
-task :release => :build do
-  system "gem push flash-#{Flash::VERSION}.gem"
-end
-
-task :default => :spec
