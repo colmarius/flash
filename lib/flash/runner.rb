@@ -2,8 +2,14 @@ require 'flash'
 require 'flash/runfile'
 
 class Flash::Runner
+
   attr_reader :options
-  attr_accessor :debug, :color, :dir_name, :runfile, :group
+
+  attr_accessor :debug
+  attr_accessor :color
+  attr_accessor :dir_name
+  attr_accessor :runfile
+  attr_accessor :group
 
   def initialize(options = {}, group)
     raise "Missing required group parameter." unless group
@@ -77,4 +83,5 @@ class Flash::Runner
       say ""
     end
   end
+
 end

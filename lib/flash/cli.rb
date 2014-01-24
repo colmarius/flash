@@ -42,4 +42,5 @@ class Flash::CLI
     group = ARGV[0]
     Flash::Runner.new(options, group).start
   end
+
 end
