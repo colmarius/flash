@@ -14,10 +14,6 @@ class Flash::CLI
         options[:command] = command
       end
 
-      opts.on("-h", "--help", "Help documentation") do
-        puts opts ; exit
-      end
-
       opts
     end
     optparse.parse!
