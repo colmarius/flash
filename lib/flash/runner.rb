@@ -28,11 +28,7 @@ class Flash::Runner
   end
 
   def recipes
-    @recipes ||= {
-      'update-master' => 'git stash ; git checkout master ; git pull ; git stash pop',
-      'status' => 'git status -s',
-      'branch' => 'git branch'
-    }
+    runfile['recipes'] || {}
   end
 
   def list_recipes

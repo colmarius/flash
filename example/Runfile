@@ -6,3 +6,8 @@ projects:
 some:
   - salsa
   - school
+
+recipes:
+  update-master: git stash; git checkout master; git pull; git stash pop
+  status: git status -s
+  branch: git branch
