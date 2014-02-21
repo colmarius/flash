@@ -7,7 +7,7 @@ some:
   - salsa
   - school
 
-recipes:
+aliases:
   update-master: git stash; git checkout master; git pull; git stash pop
   status: git status -s
   branch: git branch

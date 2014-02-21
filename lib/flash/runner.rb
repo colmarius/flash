@@ -24,15 +24,16 @@ class Flash::Runner
 
   def run(command, verbose=true)
     say "#{ prompt }#{ command }" if verbose
-    system "cd #{ app_dir } && #{ command }"
+    Dir.exists? "#{ app_dir }"
+    system "cd #{ app_dir } ; #{ command }"
   end
 
-  def recipes
-    runfile['recipes'] || {}
+  def aliases
+    runfile['aliases'] || {}
   end
 
-  def commands(recipe)
-    commands = recipes[recipe] ? recipes[recipe] : 'echo "Unknown recipe!"'
+  def commands(alias_or_command)
+    commands = aliases[alias_or_command] || alias_or_command
     commands.split(';').map(&:strip)
   end
 
@@ -64,8 +65,8 @@ class Flash::Runner
       self.dir_name = dir_name
       run "cd #{ pwd }/#{ dir_name }", false
 
-      commands = options[:recipe] ? commands(options[:recipe]) : options[:commands]
-      commands.each { |command| run(command) }\
+      commands = commands(options[:command])
+      commands.each { |command| run(command) }
 
       say ""
     end

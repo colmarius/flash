@@ -11,7 +11,7 @@ class Flash::CLI
       opts.banner = "Usage: run [options] group"
 
       opts.on("-c", "--command command", String, "Commands to run (semicolon separated)") do |command|
-        options[:commands] = command.split(';').map(&:strip)
+        options[:command] = command
       end
 
       opts.on("-h", "--help", "Help documentation") do
