@@ -14,14 +14,6 @@ class Flash::CLI
         options[:commands] = command.split(';').map(&:strip)
       end
 
-      opts.on("-r", "--recipe recipe", "Run registered recipe if present") do |recipe|
-        options[:recipe] = recipe
-      end
-
-      opts.on("-l", "--list-recipes", "List registered recipes") do |l|
-        options[:list_recipes] = l
-      end
-
       opts.on("-h", "--help", "Help documentation") do
         puts opts ; exit
       end

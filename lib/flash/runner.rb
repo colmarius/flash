@@ -31,10 +31,6 @@ class Flash::Runner
     runfile['recipes'] || {}
   end
 
-  def list_recipes
-    recipes.each_pair { |recipe, commands| puts %Q(#{ recipe }:\n\t"#{ commands }"\n\n) }
-  end
-
   def commands(recipe)
     commands = recipes[recipe] ? recipes[recipe] : 'echo "Unknown recipe!"'
     commands.split(';').map(&:strip)
@@ -63,8 +59,6 @@ class Flash::Runner
   end
 
   def start
-    list_recipes and exit if options[:list_recipes]
-
     group_dirs.each do |dir_name|
       change_color!
       self.dir_name = dir_name
