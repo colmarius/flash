@@ -13,10 +13,7 @@ The command available is run:
 ```bash
 > run
 Group name is missing.
-Usage: run [options] group
-    -c, --command command            Commands to run (semicolon separated)
-    -d, --debug                      Debug: print each command result
-    -h, --help                       Help documentation
+Usage: run command group
 ```
 
 # Example

@@ -1,30 +1,18 @@
 require 'flash'
 require 'flash/runner'
-require 'optparse'
 require 'pathname'
 
 class Flash::CLI
 
   def self.start
-    options = {}
-    optparse = OptionParser.new do |opts|
-      opts.banner = "Usage: run [options] group"
-
-      opts.on("-c", "--command command", String, "Commands to run (semicolon separated)") do |command|
-        options[:command] = command
-      end
-
-      opts
-    end
-    optparse.parse!
-
-    if ARGV.empty?
-      puts "Group name is missing."
-      puts optparse ; exit
+    if ARGV.empty? || ARGV.length != 2
+      puts "ERROR: Command and Group are missing."
+      exit 1
     end
 
-    group = ARGV[0]
-    Flash::Runner.new(options, group).start
+    command = ARGV[0]
+    group = ARGV[1]
+    Flash::Runner.new(command, group).start
   end
 
 end
