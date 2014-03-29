@@ -12,3 +12,27 @@ RSpec.configure do |config|
   config.color_enabled = true
   config.order = 'rand'
 end
+
+def flash(args)
+  capture_stdout do
+    begin
+      Flash::CLI.start(args.split(" "))
+    rescue SystemExit
+    end
+  end
+end
+
+def make_pipe
+  IO.method(:pipe).arity.zero? ? IO.pipe : IO.pipe("BINARY")
+end
+
+def capture_stdout
+  old_stdout = $stdout.dup
+  rd, wr = make_pipe
+  $stdout = wr
+  yield
+  wr.close
+  rd.read
+ensure
+  $stdout = old_stdout
+end
