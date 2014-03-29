@@ -11,7 +11,7 @@ class Flash::Clone < Flash::Base
     raise(ArgumentError, 'Missing required group parameter.') unless @group
   end
 
-  def start
+  def execute
     unknown_group_and_exit unless valid_group?(group)
     clone_projects
   end
