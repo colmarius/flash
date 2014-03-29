@@ -5,7 +5,7 @@ end
 
 require 'rspec'
 
-$:.unshift File.expand_path('../../lib', __FILE__)
+$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 
 RSpec.configure do |config|
   config.treat_symbols_as_metadata_keys_with_true_values = true
@@ -18,12 +18,13 @@ def flash(args)
     begin
       Flash::CLI.new(args.split(' ')).start
     rescue SystemExit
+      nil
     end
   end
 end
 
 def make_pipe
-  IO.method(:pipe).arity.zero? ? IO.pipe : IO.pipe("BINARY")
+  IO.method(:pipe).arity.zero? ? IO.pipe : IO.pipe('BINARY')
 end
 
 def capture_stdout

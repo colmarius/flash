@@ -9,7 +9,7 @@ module Flash
 
   private
 
-  def class_name(type)
+  def self.class_name(type)
     type.to_s.capitalize
   end
 end

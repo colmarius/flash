@@ -2,7 +2,6 @@ require 'flash'
 require 'flash/runfile'
 
 class Flash::Run
-
   attr_reader :command
 
   attr_accessor :color
@@ -15,7 +14,7 @@ class Flash::Run
     @command = params[1]
     @group = params[2]
 
-    raise(ArgumentError, "Missing required command and group parameters.") unless @command && @group
+    raise(ArgumentError, 'Missing required command and group parameters.') unless @command && @group
 
     @runfile = Flash::Runfile.new('Runfile')
   end
@@ -24,9 +23,9 @@ class Flash::Run
     Dir.pwd
   end
 
-  def run(command, verbose=true)
+  def run(command, verbose = true)
     say "#{ prompt }#{ command }" if verbose
-    Dir.exists? "#{ app_dir }"
+    Dir.exist? "#{ app_dir }"
     system "cd #{ app_dir } ; #{ command }"
   end
 
@@ -69,8 +68,7 @@ class Flash::Run
 
       commands(command).each { |command| run(command) }
 
-      say ""
+      say ''
     end
   end
-
 end
