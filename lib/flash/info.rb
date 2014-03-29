@@ -1,5 +1,5 @@
 require 'flash'
-require 'flash/runfile'
+require 'flash/base'
 
 class Flash::Info < Flash::Base
   attr_reader :group
