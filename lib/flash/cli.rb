@@ -20,7 +20,7 @@ class Flash::CLI
   end
 
   def command_required
-    puts "ERROR: Flash requires a command to run."
+    puts 'ERROR: Flash requires a command to run.'
     shutdown
   end
 
