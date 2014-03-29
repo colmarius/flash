@@ -4,4 +4,4 @@ $:.unshift File.expand_path("../../lib", __FILE__)
 
 require 'flash/cli'
 
-Flash::CLI.start
+Flash::CLI.start(ARGV)

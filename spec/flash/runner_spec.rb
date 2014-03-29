@@ -1,6 +1,6 @@
 require 'spec_helper'
-require 'flash/runner'
+require 'flash/run'
 
-describe Flash::Runner do
+describe Flash::Run do
 
 end

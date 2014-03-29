@@ -1,18 +1,30 @@
 require 'flash'
-require 'flash/runner'
+require 'flash/run'
+require 'flash/unknown_command'
 require 'pathname'
 
 class Flash::CLI
-
-  def self.start
-    if ARGV.empty? || ARGV.length != 2
-      puts "ERROR: Command and Group are missing."
-      exit 1
-    end
-
-    command = ARGV[0]
-    group = ARGV[1]
-    Flash::Runner.new(command, group).start
+  def initialize(params)
+    @args = params
   end
 
+  def start
+    command_required if @args.empty?
+    Flash.find_class(command).new(@args).start
+  end
+
+  private
+
+  def command
+    @args[0].to_s.downcase
+  end
+
+  def command_required
+    puts "ERROR: Flash requires a command to run."
+    shutdown
+  end
+
+  def shutdown
+    exit 1
+  end
 end
