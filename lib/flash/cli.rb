@@ -1,22 +1,30 @@
 require 'flash'
 require 'flash/run'
+require 'flash/unknown_command'
 require 'pathname'
 
 class Flash::CLI
+  def initialize(params)
+    @args = params
+  end
 
-  def self.start(params)
-    if params.empty?
-      puts "ERROR: Flash requires a command to run."
-      exit 1
-    end
+  def start
+    command_required if @args.empty?
+    Flash.find_class(command).new(@args).start
+  end
 
-    command = params[0].to_s.downcase
+  private
 
-    case command
-    when 'run'
-      Flash::Run.new(params).start
-    else
-      puts "ERROR: Flash does not known command: #{command}."
-    end
+  def command
+    @args[0].to_s.downcase
+  end
+
+  def command_required
+    puts "ERROR: Flash requires a command to run."
+    shutdown
+  end
+
+  def shutdown
+    exit 1
   end
 end

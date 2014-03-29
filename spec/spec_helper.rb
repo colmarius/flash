@@ -16,7 +16,7 @@ end
 def flash(args)
   capture_stdout do
     begin
-      Flash::CLI.start(args.split(" "))
+      Flash::CLI.new(args.split(' ')).start
     rescue SystemExit
     end
   end
