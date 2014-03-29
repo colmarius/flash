@@ -1,5 +1,7 @@
 # Flash
 
+[![Build Status](https://travis-ci.org/colmarius/flash.svg?branch=0.1.0)](https://travis-ci.org/colmarius/flash)
+
 Flash helps you run arbitrary or predefined commands on multiple projects all defined in the Runfile.
 
 # Installation
