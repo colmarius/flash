@@ -10,12 +10,14 @@ class Flash::Runner
   attr_accessor :runfile
   attr_accessor :group
 
-  def initialize(command, group)
-    raise "Missing required group parameter." unless group
+  def initialize(params)
+    @params = params
+    @command = params[1]
+    @group = params[2]
 
-    @command = command
+    raise "Missing required group parameter." unless @group
+
     @runfile = Flash::Runfile.new('Runfile')
-    @group = group
   end
 
   def pwd
