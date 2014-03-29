@@ -8,4 +8,8 @@ class Flash::Base
   def runfile
     @runfile ||= Flash::Runfile.new('Runfile')
   end
+
+  def valid_group?(group)
+    group && runfile[group]
+  end
 end

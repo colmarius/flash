@@ -16,14 +16,10 @@ class Flash::Info < Flash::Base
   private
 
   def output
-    if valid_runfile_group?
+    if valid_group?(group)
       runfile[group].to_yaml
     else
       group ? "Unknown group \"#{group}\" in Runfile." : runfile.to_yaml
     end
-  end
-
-  def valid_runfile_group?
-    group && runfile[group]
   end
 end
