@@ -34,8 +34,7 @@ class Flash::Clone < Flash::Base
   end
 
   def clone_single(project)
-    cloned_repo_path = clone_path(project)
-    system('git', 'clone', cloned_repo_path)
+    system('git', 'clone', clone_path(project))
     puts "\n[#{project}] Done cloning project.\n\n"
   end
 
