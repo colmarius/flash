@@ -1,7 +1,7 @@
 require 'flash'
 require 'flash/runfile'
 
-class Flash::Runner
+class Flash::Run
 
   attr_reader :command
 
