@@ -1,5 +1,6 @@
 require 'flash'
 require 'flash/run'
+require 'flash/info'
 require 'flash/unknown_command'
 require 'pathname'
 
