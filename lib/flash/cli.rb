@@ -1,4 +1,5 @@
 require 'flash'
+require 'flash/clone'
 require 'flash/run'
 require 'flash/info'
 require 'flash/unknown_command'
