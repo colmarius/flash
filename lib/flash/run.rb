@@ -15,7 +15,7 @@ class Flash::Run
     @command = params[1]
     @group = params[2]
 
-    raise "Missing required group parameter." unless @group
+    raise(ArgumentError, "Missing required command and group parameters.") unless @command && @group
 
     @runfile = Flash::Runfile.new('Runfile')
   end
