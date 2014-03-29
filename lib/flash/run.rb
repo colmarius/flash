@@ -1,12 +1,11 @@
 require 'flash'
-require 'flash/runfile'
+require 'flash/base'
 
-class Flash::Run
+class Flash::Run < Flash::Base
   attr_reader :command
 
   attr_accessor :color
   attr_accessor :dir_name
-  attr_accessor :runfile
   attr_accessor :group
 
   def initialize(params)
@@ -15,8 +14,6 @@ class Flash::Run
     @group = params[2]
 
     raise(ArgumentError, 'Missing required command and group parameters.') unless @command && @group
-
-    @runfile = Flash::Runfile.new('Runfile')
   end
 
   def pwd
