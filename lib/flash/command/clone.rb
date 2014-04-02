@@ -43,6 +43,6 @@ class Flash::Command::Clone < Flash::Command::Base
   end
 
   def base_clone_path
-    runfile['clone']['github']
+    runfile['clone']['git']
   end
 end
