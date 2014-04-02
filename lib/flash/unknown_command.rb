@@ -5,7 +5,7 @@ class Flash::UnknownCommand
     @command = args[0]
   end
 
-  def start
+  def execute
     puts "ERROR: Flash does not know command: #{@command}."
     shutdown
   end

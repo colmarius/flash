@@ -11,8 +11,13 @@ class Flash::CLI
   end
 
   def start
+    flash = setup
+    flash.execute
+  end
+
+  def setup
     command_required if @args.empty?
-    Flash.find_class(command).new(@args).start
+    Flash.find_class(command).new(@args)
   end
 
   private

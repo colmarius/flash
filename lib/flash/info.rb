@@ -9,7 +9,7 @@ class Flash::Info < Flash::Base
     @group = params[1]
   end
 
-  def start
+  def execute
     puts output
   end
 

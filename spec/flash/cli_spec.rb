@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'flash/cli'
 
 describe Flash::CLI do
-  describe '#start' do
+  describe '#setup' do
     describe 'when command is missing' do
       it 'returns an error' do
         output = flash ''
@@ -10,10 +10,12 @@ describe Flash::CLI do
       end
     end
 
-    describe 'when the given command is not allowed' do
-      it 'it returns an error' do
-        output = flash 'lorem'
-        expect(output).to match(/ERROR: Flash does not know command: lorem./)
+  end
+  describe '#setup' do
+    describe 'when the given command is allowed' do
+      it 'returns a Flash class instance' do
+        output = Flash::CLI.new(['run']).setup
+        expect(output).to be_a_kind_of(Flash::Run)
       end
     end
   end

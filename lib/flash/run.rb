@@ -12,8 +12,6 @@ class Flash::Run < Flash::Base
     @params = params
     @command = params[1]
     @group = params[2]
-
-    raise(ArgumentError, 'Missing required command and group parameters.') unless @command && @group
   end
 
   def pwd
@@ -57,7 +55,10 @@ class Flash::Run < Flash::Base
     runfile[group]
   end
 
-  def start
+  def execute
+    raise(ArgumentError, 'Missing required command and group parameters.') unless @command && @group
+    @runfile = Flash::Runfile.new('Runfile')
+
     group_dirs.each do |dir_name|
       change_color!
       self.dir_name = dir_name
