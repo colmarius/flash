@@ -80,7 +80,7 @@ flash clone projects
 ### flash run
 
 ```bash
-flash clone [command(s) | alias] [group]
+flash run [command(s) | alias] [group]
 ```
 
 The _run_ command is the heart of __flash__. It requires both a command (or commands) and a group. It will parse the Runfile based on the specified group, retrieve all projects in that group and then execute same command(s) one at a time per each project.
