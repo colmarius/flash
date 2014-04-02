@@ -1,7 +1,7 @@
 require 'flash'
-require 'flash/base'
+require 'flash/command/base'
 
-class Flash::Clone < Flash::Base
+class Flash::Command::Clone < Flash::Command::Base
   attr_reader :group
 
   def initialize(params)

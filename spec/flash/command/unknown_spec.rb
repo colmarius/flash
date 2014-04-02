@@ -1,7 +1,7 @@
 require 'spec_helper'
-require 'flash/cli'
+require 'flash/command/unknown'
 
-describe Flash::UnknownCommand do
+describe Flash::Command::Unknown do
   describe '#setup' do
     describe 'when the given command is not allowed' do
       it 'returns an error' do

@@ -1,9 +1,5 @@
 require 'flash'
-require 'flash/clone'
-require 'flash/run'
-require 'flash/info'
-require 'flash/unknown_command'
-require 'pathname'
+require 'flash/command_matcher'
 
 class Flash::CLI
   def initialize(params)
@@ -17,7 +13,7 @@ class Flash::CLI
 
   def setup
     command_required if @args.empty?
-    Flash.find_class(command).new(@args)
+    Flash::CommandMatcher.find_class(command).new(@args)
   end
 
   private
