@@ -1,17 +1,13 @@
 projects:
-  - salsa
-  - dancing
-  - school
-
-some:
-  - salsa
-  - school
+  - ruhoh.rb
+  - silly
+  - 3.0-feature-walkthrough
+  - multimarkdown-example
 
 aliases:
   update-master: git stash; git checkout master; git pull; git stash pop
   status: git status -s
   branch: git branch
 
-# FUTURE: I want to be able to clone repos too
 clone:
-  github: git@github.com:LosLombricos
+  git: git@github.com:ruhoh

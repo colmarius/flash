@@ -1,3 +1,0 @@
-group :development do
-  gem 'flash', path: '../'
-end
