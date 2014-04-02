@@ -1,11 +1,8 @@
 projects:
-  - salsa
-  - dancing
-  - school
-
-some:
-  - salsa
-  - school
+  - ruhoh.rb
+  - silly
+  - 3.0-feature-walkthrough
+  - multimarkdown-example
 
 aliases:
   update-master: git stash; git checkout master; git pull; git stash pop
@@ -13,4 +10,4 @@ aliases:
   branch: git branch
 
 clone:
-  git: git@github.com:LosLombricos
+  git: git@github.com:ruhoh
