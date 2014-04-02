@@ -7,11 +7,11 @@ class Flash::Clone < Flash::Base
   def initialize(params)
     @params = params
     @group = params[1]
-
-    raise(ArgumentError, 'Missing required group parameter.') unless @group
   end
 
   def execute
+    raise(ArgumentError, 'Missing required group parameter.') unless @group
+
     unknown_group_and_exit unless valid_group?(group)
     clone_projects
   end
