@@ -1,7 +1,8 @@
 require 'flash'
+require 'flash/command'
 require 'flash/runfile'
 
-class Flash::Base
+class Flash::Command::Base
   def initialize
   end
 

@@ -15,7 +15,7 @@ describe Flash::CLI do
     describe 'when the given command is allowed' do
       it 'returns a Flash class instance' do
         output = Flash::CLI.new(['run']).setup
-        expect(output).to be_a_kind_of(Flash::Run)
+        expect(output).to be_a_kind_of(Flash::Command::Run)
       end
     end
   end

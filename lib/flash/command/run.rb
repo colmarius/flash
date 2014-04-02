@@ -1,7 +1,7 @@
 require 'flash'
-require 'flash/base'
+require 'flash/command/base'
 
-class Flash::Run < Flash::Base
+class Flash::Command::Run < Flash::Command::Base
   attr_reader :command
 
   attr_accessor :color

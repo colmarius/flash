@@ -1,6 +1,7 @@
 require 'flash'
+require 'flash/command'
 
-class Flash::UnknownCommand
+class Flash::Command::Unknown
   def initialize(args)
     @command = args[0]
   end
