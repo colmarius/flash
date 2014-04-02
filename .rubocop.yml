@@ -30,6 +30,9 @@ BracesAroundHashParameters:
 AsciiComments:
   Enabled: false
 
+Encoding:
+  Enabled: false
+
 ClassLength:
   Enabled: false
 
