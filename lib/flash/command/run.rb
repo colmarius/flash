@@ -1,11 +1,12 @@
 require 'flash'
 require 'flash/command/base'
+require 'pathname'
 
 class Flash::Command::Run < Flash::Command::Base
   attr_reader :command
 
   attr_accessor :color
-  attr_accessor :dir_name
+  attr_accessor :project
   attr_accessor :group
 
   def initialize(params)
@@ -16,14 +17,13 @@ class Flash::Command::Run < Flash::Command::Base
 
   def execute
     raise(ArgumentError, 'Missing required command and group parameters.') unless @command && @group
-    @runfile = Flash::Runfile.new('Runfile')
 
-    group_dirs.each do |dir_name|
+    projects.each do |project|
       change_color!
-      self.dir_name = dir_name
-      run "cd #{ pwd }/#{ dir_name }", false
+      self.project = project
 
-      commands(command).each { |command| run(command) }
+      run "cd #{ project_dir }", false
+      commands(command).each { |cmd| run(cmd) }
 
       say ''
     end
@@ -31,23 +31,26 @@ class Flash::Command::Run < Flash::Command::Base
 
   private
 
-  def pwd
-    Dir.pwd
-  end
-
   def run(command, verbose = true)
-    say "#{ prompt }#{ command }" if verbose
-    Dir.exist? "#{ app_dir }"
-    system "cd #{ app_dir } ; #{ command }"
+    prompt command if verbose
+    system "cd #{ project_dir } ; #{ command }"
   end
 
   def aliases
     runfile['aliases'] || {}
   end
 
+  def projects
+    runfile[group]
+  end
+
   def commands(alias_or_command)
     commands = aliases[alias_or_command] || alias_or_command
     commands.split(';').map(&:strip)
+  end
+
+  def prompt(message)
+    say "#{ project }> #{ message }"
   end
 
   def say(stuff)
@@ -60,15 +63,7 @@ class Flash::Command::Run < Flash::Command::Base
     self.color = rand((1..22)) * 10 + 2
   end
 
-  def app_dir
-    "#{ pwd }/#{ dir_name }"
-  end
-
-  def prompt
-    "#{ dir_name }> "
-  end
-
-  def group_dirs
-    runfile[group]
+  def project_dir
+    "#{ Dir.pwd }/#{ project }"
   end
 end

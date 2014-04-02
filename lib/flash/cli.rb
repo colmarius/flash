@@ -1,6 +1,5 @@
 require 'flash'
 require 'flash/command_matcher'
-require 'pathname'
 
 class Flash::CLI
   def initialize(params)
