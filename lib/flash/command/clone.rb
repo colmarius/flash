@@ -39,10 +39,11 @@ class Flash::Command::Clone < Flash::Command::Base
   end
 
   def clone_path(project)
-    "#{base_clone_path}/#{project}"
+    "#{ base_clone_path }/#{ project }.git"
   end
 
   def base_clone_path
-    runfile['clone']['git']
+    base_url = runfile['clone']['git']
+    base_url.gsub(/\/+$/, '')
   end
 end
