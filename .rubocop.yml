@@ -3,7 +3,31 @@ AllCops:
     - '**/Rakefile'
     - '**/Gemfile'
 
+AndOr:
+  Enabled: false
+
+AsciiComments:
+  Enabled: false
+
+Blocks:
+  Enabled: false
+
+BracesAroundHashParameters:
+  Enabled: false
+
+ClassAndModuleChildren:
+  Enabled: false
+
+ClassLength:
+  Enabled: false
+
+ConstantName:
+  Enabled: false
+
 Documentation:
+  Enabled: false
+
+Encoding:
   Enabled: false
 
 LineLength:
@@ -15,32 +39,8 @@ MethodLength:
 RegexpLiteral:
   Enabled: false
 
-Validation:
-  Enabled: false
-
 SignalException:
   EnforcedStyle: only_raise
 
-AndOr:
-  Enabled: false
-
-BracesAroundHashParameters:
-  Enabled: false
-
-AsciiComments:
-  Enabled: false
-
-Encoding:
-  Enabled: false
-
-ClassLength:
-  Enabled: false
-
-Blocks:
-  Enabled: false
-
-ConstantName:
-  Enabled: false
-
-ClassAndModuleChildren:
+Validation:
   Enabled: false
