@@ -3,7 +3,7 @@ require 'flash'
 
 describe Flash do
 
-  describe "VERSION" do
+  describe '#version' do
     subject { Flash::VERSION }
     it { should be_a String }
   end

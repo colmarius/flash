@@ -1,2 +1,8 @@
 *.gem
 /coverage
+Gemfile.lock
+
+/* Ignore bundle configs */
+.bundle/
+vendor/
+bin/
