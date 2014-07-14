@@ -11,7 +11,7 @@ Gem::Specification.new do |gem|
   gem.author   = ["Marius Colacioiu"]
   gem.email    = ["marius.colacioiu@gmail.com"]
   gem.homepage = "http://github.com/colmarius/flash"
-  gem.summary  = %q{ Flash helps you run same commands on multiple projects all defined in the Runfile. }
+  gem.summary  = %q{ Flash helps you run same commands on multiple projects all defined in the `.flash.yml` config. }
 
   gem.description = gem.summary
 

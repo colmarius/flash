@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/colmarius/flash.svg?branch=0.1.0)](https://travis-ci.org/colmarius/flash)
 
-Flash helps you run arbitrary commands on multiple projects. Both _projects_ and _commands_ are defined in the Runfile.
+Flash helps you run arbitrary commands on multiple projects. Both _projects_ and _commands_ are defined in the .flash.yml.
 
 ## Installation
 
@@ -20,10 +20,10 @@ end
 
 ## Usage
 
-Flash requires a `Runfile` in order to run, which should be defined at the root of your workspace folder; where all your projects live, and where you run _flash commands_.
+Flash requires a `.flash.yml` in order to run, which should be defined at the root of your workspace folder; where all your projects live, and where you run _flash commands_.
 
 ```
-# Example: Runfile
+# Example: .flash.yml
 
 projects:
   - ruhoh.rb
@@ -50,7 +50,7 @@ clone:
 flash info [group]
 ```
 
-Takes an optional group parameter. Will parse Runfile and print the whole Runfile, or print a group's description info.
+Takes an optional group parameter. Will parse .flash.yml and print the whole .flash.yml, or print a group's description info.
 
 ### flash clone
 
@@ -58,10 +58,10 @@ Takes an optional group parameter. Will parse Runfile and print the whole Runfil
 flash clone [group]
 ```
 
-Requires a clone/git base url, from where a group of projects can be cloned from. Runfile should contain the clone git url setting.
+Requires a clone/git base url, from where a group of projects can be cloned from. .flash.yml should contain the clone git url setting.
 
 ```
-# Example: Runfile
+# Example: .flash.yml
 
 projects:
   - ruhoh.rb
@@ -83,13 +83,13 @@ flash clone projects
 flash run [command(s) | alias] [group]
 ```
 
-The _run_ command is the heart of __flash__. It requires both a command (or commands) and a group. It will parse the Runfile based on the specified group, retrieve all projects in that group and then execute same command(s) one at a time per each project.
+The _run_ command is the heart of __flash__. It requires both a command (or commands) and a group. It will parse the .flash.yml based on the specified group, retrieve all projects in that group and then execute same command(s) one at a time per each project.
 
 
 Command: can either be defined in `aliases` section, or can be a list of commands semi-column separated.
 
 ```
-# Example: Runfile
+# Example: .flash.yml
 
 projects:
   - ruhoh.rb

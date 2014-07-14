@@ -37,11 +37,11 @@ class Flash::Command::Run < Flash::Command::Base
   end
 
   def aliases
-    runfile['aliases'] || {}
+    config_file['aliases'] || {}
   end
 
   def projects
-    runfile[group]
+    config_file[group]
   end
 
   def commands(alias_or_command)
