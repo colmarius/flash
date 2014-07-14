@@ -19,7 +19,7 @@ class Flash::Command::Clone < Flash::Command::Base
   private
 
   def unknown_group_and_exit
-    puts "Unknown group \"#{group}\" in Runfile."
+    puts "Unknown group \"#{group}\" in .flash.yml config."
     exit 1
   end
 
@@ -30,7 +30,7 @@ class Flash::Command::Clone < Flash::Command::Base
   end
 
   def projects
-    runfile[group] || []
+    config_file[group] || []
   end
 
   def clone_single(project)
@@ -43,7 +43,7 @@ class Flash::Command::Clone < Flash::Command::Base
   end
 
   def base_clone_path
-    base_url = runfile['clone']['git']
+    base_url = config_file['clone']['git']
     base_url.gsub(/\/+$/, '')
   end
 end

@@ -1,16 +1,16 @@
 require 'flash'
 require 'flash/command'
-require 'flash/runfile'
+require 'flash/config'
 
 class Flash::Command::Base
   def initialize
   end
 
-  def runfile
-    @runfile ||= Flash::Runfile.new('Runfile')
+  def config_file
+    @config_file ||= Flash::Config.new('.flash.yml')
   end
 
   def valid_group?(group)
-    group && runfile[group]
+    group && config_file[group]
   end
 end

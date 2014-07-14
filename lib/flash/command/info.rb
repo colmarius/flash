@@ -17,9 +17,9 @@ class Flash::Command::Info < Flash::Command::Base
 
   def output
     if valid_group?(group)
-      runfile[group].to_yaml
+      config_file[group].to_yaml
     else
-      group ? "Unknown group \"#{group}\" in Runfile." : runfile.to_yaml
+      group ? "Unknown group \"#{group}\" in .flash.yml config." : config_file.to_yaml
     end
   end
 end

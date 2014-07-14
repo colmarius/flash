@@ -2,10 +2,10 @@ require 'flash'
 require 'yaml'
 require 'delegate'
 
-class Flash::Runfile < SimpleDelegator
+class Flash::Config < SimpleDelegator
   def initialize(filename = nil)
     unless File.exist?(filename)
-      puts 'ERROR: missing Runfile.'
+      puts 'ERROR: missing .flash.yml config.'
       exit 1
     end
 
