@@ -15,8 +15,6 @@ Gem::Specification.new do |gem|
 
   gem.description = gem.summary
 
-  gem.rubyforge_project = "flash"
-
   gem.executables = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   gem.files = Dir["**/*"].select { |d| d =~ %r{^(README|bin/|lib/|spec/)} }
 end
