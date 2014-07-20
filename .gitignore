@@ -2,7 +2,7 @@
 /coverage
 Gemfile.lock
 
-/* Ignore bundle configs */
+# Ignore bundle config.
 .bundle/
 vendor/
 bin/
