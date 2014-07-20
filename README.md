@@ -1,6 +1,6 @@
+[![Gem Version](https://badge.fury.io/rb/flash.svg)](http://badge.fury.io/rb/flash)
 [![Build Status](https://travis-ci.org/colmarius/flash.svg?branch=master)](https://travis-ci.org/colmarius/flash?branch=master)
 [![Coverage Status](https://img.shields.io/coveralls/colmarius/flash.svg?branch=master)](https://coveralls.io/r/colmarius/flash?branch=master)
-[![Gem Version](https://badge.fury.io/rb/flash.svg)](http://badge.fury.io/rb/flash)
 
 Hello! This gem is currently under development towards _0.1.0 version_!
 
