@@ -39,4 +39,12 @@ class Flash::CLI < Thor
   def run(command, group)
     Flash::Command::Run.new(command, group).execute
   end
+
+  desc 'version', 'Display Flash gem version'
+
+  map ['-v', '--version'] => :version
+
+  def version
+    puts Flash::VERSION
+  end
 end
