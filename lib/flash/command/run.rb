@@ -17,6 +17,7 @@ class Flash::Command::Run < Flash::Command::Base
   def execute
     raise(ArgumentError, 'Missing required command and group parameters.') unless @command && @group
 
+    unknown_group_and_exit unless valid_group?(group)
     projects.each do |project|
       change_color!
       self.project = project
@@ -29,6 +30,11 @@ class Flash::Command::Run < Flash::Command::Base
   end
 
   private
+
+  def unknown_group_and_exit
+    puts "Unknown group \"#{group}\" in .flash.yml config."
+    exit 1
+  end
 
   def run(command, verbose = true)
     prompt command if verbose
