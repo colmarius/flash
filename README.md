@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.org/colmarius/flash.svg?branch=master)](https://travis-ci.org/colmarius/flash)
-[![Coverage Status](https://img.shields.io/coveralls/colmarius/flash.svg)](https://coveralls.io/r/colmarius/flash?branch=master)
+[![Build Status](https://travis-ci.org/colmarius/flash.svg?branch=master)](https://travis-ci.org/colmarius/flash?branch=master)
+[![Coverage Status](https://img.shields.io/coveralls/colmarius/flash.svg?branch=master)](https://coveralls.io/r/colmarius/flash?branch=master)
 
 Flash helps you run arbitrary commands on multiple projects. Both _projects_ and _commands_ are defined in the .flash.yml.
 
