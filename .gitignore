@@ -6,3 +6,6 @@ Gemfile.lock
 .bundle/
 vendor/
 bin/
+
+# Ignore test Flash config.
+.flash.yml
