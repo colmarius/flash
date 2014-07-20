@@ -15,6 +15,7 @@ Gem::Specification.new do |gem|
 
   gem.description = gem.summary
 
-  gem.executables = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
-  gem.files = Dir["**/*"].select { |d| d =~ %r{^(README|bin/|lib/|spec/)} }
+  gem.bindir      = 'exe'
+  gem.executables = `git ls-files -- exe/*`.split("\n").map{ |f| File.basename(f) }
+  gem.files = Dir["**/*"].select { |d| d =~ %r{^(README|exe/|lib/|spec/)} }
 end

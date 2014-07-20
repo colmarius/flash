@@ -8,7 +8,7 @@ guard :rspec do
 end
 
 guard :rubocop, all_on_start: false, cli: ['--format', 'clang'] do
-  watch(%r{^bin/flash$})
+  watch(%r{^exe/flash$})
   watch(%r{^lib/.+\.rb$})
   watch(%r{^spec/.+\.rb$})
   watch(%r{(?:.+/)?\.rubocop\.yml$}) { |m| File.dirname(m[0]) }
