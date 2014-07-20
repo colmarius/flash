@@ -2,6 +2,8 @@
 [![Coverage Status](https://img.shields.io/coveralls/colmarius/flash.svg?branch=master)](https://coveralls.io/r/colmarius/flash?branch=master)
 [![Gem Version](https://badge.fury.io/rb/flash.svg)](http://badge.fury.io/rb/flash)
 
+Hello! This gem is currently under development towards _0.1.0 version_!
+
 Flash helps you run arbitrary commands on multiple projects. Both _projects_ and _commands_ are defined in the .flash.yml.
 
 ## Installation
