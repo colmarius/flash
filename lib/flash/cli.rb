@@ -1,33 +1,42 @@
 require 'flash'
-require 'flash/command_matcher'
+require 'flash/command/clone'
+require 'flash/command/info'
+require 'flash/command/run'
+require 'thor'
 
-class Flash::CLI
-  def initialize(params)
-    @args = params
+class Flash::CLI < Thor
+  class << self
+    def is_thor_reserved_word?(word, type)
+      return false if word == 'run'
+      super
+    end
   end
 
-  def start
-    flash = setup
-    flash.execute
+  desc 'clone GROUP', 'Clone all projects found in GROUP config file'
+
+  def clone(group)
+    Flash::Command::Clone.new(group).execute
   end
 
-  def setup
-    command_required if @args.empty?
-    Flash::CommandMatcher.find_class(command).new(@args)
+  desc 'info [GROUP]', 'Display information from config file'
+
+  def info(group = nil)
+    Flash::Command::Info.new(group).execute
   end
 
-  private
+  desc 'run COMMAND GROUP', 'Run one or more COMMAND(s) on the specified GROUP'
 
-  def command
-    @args[0].to_s.downcase
-  end
+  long_desc <<-LONGDESC
+    Run the COMMAND(s) on the specified GROUP.
 
-  def command_required
-    puts 'ERROR: Flash requires a command to run.'
-    shutdown
-  end
+    More than one command can be specified if wrapped under quotes
+    and are semi-column separated.
 
-  def shutdown
-    exit 1
+    In alternative aliases can be used, which can be defined under "aliases"
+    in .flash.yml config file.
+  LONGDESC
+
+  def run(command, group)
+    Flash::Command::Run.new(command, group).execute
   end
 end
