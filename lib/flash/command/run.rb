@@ -9,10 +9,9 @@ class Flash::Command::Run < Flash::Command::Base
   attr_accessor :project
   attr_accessor :group
 
-  def initialize(params)
-    @params = params
-    @command = params[1]
-    @group = params[2]
+  def initialize(command, group)
+    @command = command
+    @group = group
   end
 
   def execute
