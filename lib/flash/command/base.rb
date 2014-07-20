@@ -7,7 +7,7 @@ class Flash::Command::Base
   end
 
   def config_file
-    @config_file ||= Flash::Config.new('.flash.yml')
+    @config_file ||= Flash::Config.new
   end
 
   def valid_group?(group)
