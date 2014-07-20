@@ -40,22 +40,22 @@ class Flash::Command::Run < Flash::Command::Base
     end
   end
 
+  def projects
+    config[group]
+  end
+
   def run(command, verbose = true)
     prompt command if verbose
     system "cd #{ project_dir } ; #{ command }"
   end
 
-  def aliases
-    config['aliases'] || {}
-  end
-
-  def projects
-    config[group]
-  end
-
   def commands(alias_or_command)
     commands = aliases[alias_or_command] || alias_or_command
     commands.split(';').map(&:strip)
+  end
+
+  def aliases
+    config['aliases'] || {}
   end
 
   def prompt(message)
