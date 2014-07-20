@@ -44,3 +44,6 @@ SignalException:
 
 Validation:
   Enabled: false
+
+Style/PredicateName:
+  Enabled: false
