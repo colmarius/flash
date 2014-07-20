@@ -4,9 +4,8 @@ require 'flash/command/base'
 class Flash::Command::Clone < Flash::Command::Base
   attr_reader :group
 
-  def initialize(params)
-    @params = params
-    @group = params[1]
+  def initialize(group)
+    @group = group
   end
 
   def execute
@@ -30,7 +29,7 @@ class Flash::Command::Clone < Flash::Command::Base
   end
 
   def projects
-    config_file[group] || []
+    config[group] || []
   end
 
   def clone_single(project)
@@ -43,7 +42,7 @@ class Flash::Command::Clone < Flash::Command::Base
   end
 
   def base_clone_path
-    base_url = config_file['clone']['git']
+    base_url = config['clone']['git']
     base_url.gsub(/\/+$/, '')
   end
 end

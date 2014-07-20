@@ -18,4 +18,6 @@ Gem::Specification.new do |gem|
   gem.bindir      = 'exe'
   gem.executables = `git ls-files -- exe/*`.split("\n").map{ |f| File.basename(f) }
   gem.files = Dir["**/*"].select { |d| d =~ %r{^(README|exe/|lib/|spec/)} }
+
+  gem.add_dependency 'thor', '~> 0.19.1'
 end

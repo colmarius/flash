@@ -6,11 +6,11 @@ class Flash::Command::Base
   def initialize
   end
 
-  def config_file
-    @config_file ||= Flash::Config.new('.flash.yml')
+  def config
+    @config ||= Flash::Config.new
   end
 
   def valid_group?(group)
-    group && config_file[group]
+    group && config[group]
   end
 end
