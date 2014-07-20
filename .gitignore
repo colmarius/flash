@@ -2,7 +2,10 @@
 /coverage
 Gemfile.lock
 
-/* Ignore bundle configs */
+# Ignore bundle config.
 .bundle/
 vendor/
 bin/
+
+# Ignore test Flash config.
+.flash.yml
