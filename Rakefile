@@ -20,7 +20,7 @@ task :coverage do
   Rake::Task['spec'].execute
 end
 
-desc 'Run RuboCop on the lib directory'
+desc 'Run RuboCop on this library'
 RuboCop::RakeTask.new(:rubocop) do |task|
   task.patterns = ['exe/flash', 'lib/**/*.rb', 'spec/**/*.rb']
   task.fail_on_error = false
