@@ -4,9 +4,8 @@ require 'flash/command/base'
 class Flash::Command::Clone < Flash::Command::Base
   attr_reader :group
 
-  def initialize(params)
-    @params = params
-    @group = params[1]
+  def initialize(group)
+    @group = group
   end
 
   def execute
