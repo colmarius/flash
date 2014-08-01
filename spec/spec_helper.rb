@@ -24,7 +24,7 @@ end
 def flash(args)
   capture_stdout do
     begin
-      Flash::CLI.new(args.split(' ')).start
+      Flash::CLI.start(args.split(' '))
     rescue SystemExit
       nil
     end
