@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gemspec
 
-group :development do
+group :test do
   gem 'coveralls', :require => false
   gem 'guard-rspec', :require => false
   gem 'guard-rubocop', :require => false
