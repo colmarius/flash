@@ -31,6 +31,30 @@ def flash(args)
   end
 end
 
+def write_config_file(options = {})
+  config_file = options[:config_file] || '.flash.yml'
+  contents    = options[:contents] || default_contents
+
+  File.open(config_file, 'w') do |file|
+    contents.split('\n').each do |line|
+      file.puts line
+    end
+  end
+  File.expand_path(config_file)
+end
+
+def default_contents
+  <<-CONTENTS
+    projects:
+      - foo
+      - bar
+      - buz
+    libraries:
+      - cippa
+      - lippa
+  CONTENTS
+end
+
 def make_pipe
   IO.method(:pipe).arity.zero? ? IO.pipe : IO.pipe('BINARY')
 end
