@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'flash/config'
 
-describe Flash::Config do
+describe Flash::Config, :fakefs  do
   subject { Flash::Config.new }
 
   it 'can load from a file' do

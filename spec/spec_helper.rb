@@ -13,12 +13,15 @@ if ENV['TRAVIS'] || ENV['COVERAGE']
 end
 
 require 'rspec'
+require 'fakefs/safe'
+require 'fakefs/spec_helpers'
 
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 
 RSpec.configure do |config|
   config.color = true
   config.order = 'rand'
+  config.include FakeFS::SpecHelpers, :fakefs
 end
 
 def flash(args)
