@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gemspec
 
 group :test do
+  gem 'fakefs'
   gem 'coveralls', :require => false
   gem 'guard-rspec', :require => false
   gem 'guard-rubocop', :require => false
