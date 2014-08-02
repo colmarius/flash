@@ -1,11 +1,36 @@
+Flash
+=====
+
 [![Gem Version](https://badge.fury.io/rb/flash.svg)](http://badge.fury.io/rb/flash)
 [![Build Status](https://travis-ci.org/colmarius/flash.svg?branch=master)](https://travis-ci.org/colmarius/flash?branch=master)
 
 Hello! This gem is currently under development towards _0.1.0 version_!
 
-Flash helps you run arbitrary commands on multiple projects. Both _projects_ and _commands_ are defined in the .flash.yml.
+Overview
+--------
 
-## Installation
+Main purpose of Flash is to eliminate repetitive tasks, those of running the
+same commands on multiple directories.
+
+It allows one to define:
+- __aliases__ for sets of commands to be run on multiple directories
+- __groups__ for grouping together multiple directories
+
+Both groups and aliases can be defined in the _.flash.yml_ configuration file.
+
+Motivation
+----------
+
+__Simple configuration file__
+
+A place to define both groups and aliases.
+
+__Inspect output__
+
+See the output of each command flash will run for you on a group of projects. 
+
+Installation
+------------
 
 You can either install the gem manually:
 
@@ -21,109 +46,149 @@ group :development do
 end
 ```
 
-## Usage
+Usage
+-----
 
-Flash requires a `.flash.yml` in order to run, which should be defined at the root of your workspace folder; where all your projects live, and where you run _flash commands_.
+Flash requires a `.flash.yml` file in order to function. This should be
+defined at the root of your workspace folder.
 
 ```
-# Example: .flash.yml
+# .flash.yml
 
-projects:
-  - ruhoh.rb
-  - silly
-  - 3.0-feature-walkthrough
-  - multimarkdown-example
+frontend:
+  - super-product1
+  - super-product2
+  - super-api
+  - super-sso
 
-sample:
-  - ruhoh.rb
-  - 3.0-feature-walkthrough
+libraries:
+  - super-rest-client
+  - super-core-js
+  - super-core-css
 
 aliases:
-  update-master: git stash; git checkout master; git pull; git stash pop
+  update-master: git stash; git checkout master; git pull
   status: git status -s
-  branch: git branch
 
 clone:
-  git: git@github.com:ruhoh
+  git: git@github.com:SuperDuper
 ```
 
-### flash info
+Here we define two groups _frontend_ and _libraries_. We will be allowed to run commands on each of these groups.
 
-```bash
-flash info [group]
-```
+Whereas _aliases_ and _clone_ are two special configuration sections:
 
-Takes an optional group parameter. Will parse .flash.yml and print the whole .flash.yml, or print a group's description info.
+- __aliases__: allows two save repetitive and long commands as aliases
+- __clone__: allows to define a base git URL from where projects in a group can be cloned  
+
+With a flash configuration in your current workspace you are now set to run flash commands.
+
+Commands
+--------
+
+Running `flash` will give you the following output:
+
+    Commands:
+      flash clone GROUP        # Clone all projects found in GROUP config file
+      flash help [COMMAND]     # Describe available commands or one specific command
+      flash info [GROUP]       # Display information from config file
+      flash run COMMAND GROUP  # Run one or more COMMAND(s) on the specified GROUP
+      flash version            # Display Flash gem version
 
 ### flash clone
 
-```bash
-flash clone [group]
+    flash clone GROUP
+
+Allows to clone all projects defined in a GROUP by using the clone git base
+URL.
+
+Getting back to our .flash.yml example file...
+
 ```
+# .flash.yml
 
-Requires a clone/git base url, from where a group of projects can be cloned from. .flash.yml should contain the clone git url setting.
+frontend:
+  - super-product1
+  - super-product2
+  - super-api
+  - super-sso
 
-```
-# Example: .flash.yml
-
-projects:
-  - ruhoh.rb
-  - silly
+...
 
 clone:
-  git: git@github.com:ruhoh
+  git: git@github.com:SuperDuper
 ```
 
-Example:
+Running the following command...
 
-```bash
-flash clone projects
-```
+    flash clone frontend
+
+will clone from SuperDuper organization all projects defined in frontend group.
+
+### flash info
+
+    flash info [GROUP]
+
+This is a helper command for printing `.flash.yml` contents. Prints all file
+contents or just part of it (depending if group or other config section is
+specified).
 
 ### flash run
 
-```bash
-flash run [command(s) | alias] [group]
+    flash run COMMAND GROUP
+
+The heart of flash is the __run__ command. It requires both a COMMAND and a 
+GROUP. With this command one can run same tasks on all projects of same GROUP.
+
+- command: can be a standalone command, or be defined in `aliases` section (where it must be a list of commands, semi-column separated)
+
+Getting back to our .flash.yml example file...
+
 ```
+# .flash.yml
 
-The _run_ command is the heart of __flash__. It requires both a command (or commands) and a group. It will parse the .flash.yml based on the specified group, retrieve all projects in that group and then execute same command(s) one at a time per each project.
+frontend:
+  - super-product1
+  - super-product2
+  - super-api
+  - super-sso
 
-
-Command: can either be defined in `aliases` section, or can be a list of commands semi-column separated.
-
-```
-# Example: .flash.yml
-
-projects:
-  - ruhoh.rb
-  - silly
-  - 3.0-feature-walkthrough
-  - multimarkdown-example
+libraries:
+  - super-rest-client
+  - super-core-js
+  - super-core-css
 
 aliases:
-  update-master: git stash; git checkout master; git pull; git stash pop
+  update-master: git stash; git checkout master; git pull
   status: git status -s
-  branch: git branch
-```
 
-
-Some examples:
-
-```bash
-flash run ls projects
-...
-
-flash run "pwd ; ls" projects
-...
-
-flash run update-master projects
 ...
 ```
 
-## Contributing
+here are some commands you can run:
 
-- add guide lines
+    # Update master branch.
+    flash run update-master frontend
+    flash run update-master libraries
 
-## Notes
+    # Display status.
+    flash run status frontend
+
+    # Lists some files.
+    flash run ls frontend 
+
+    # Lets push master branch to origin/staging (forced) for all frontend projects.
+    flash run "git checkout master ; git checkout -B staging ; git push -f ; git checkout master" frontend
+
+    # This last command could be aliased to `master-to-staging`, which would result in:
+    flash run master-to-staging frontend
+
+Contributing
+------------
+
+Please see [CONTRIBUTING.md](https://github.com/colmarius/flash/blob/update-docs/CONTRIBUTING.md).
+
+Note
+----
 
 This is a project to level up my gem skills.
