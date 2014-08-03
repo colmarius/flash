@@ -21,6 +21,7 @@ $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 RSpec.configure do |config|
   config.color = true
   config.order = 'rand'
+  config.raise_errors_for_deprecations!
   config.include FakeFS::SpecHelpers, :fakefs
 end
 
