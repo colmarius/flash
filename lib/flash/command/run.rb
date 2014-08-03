@@ -3,7 +3,6 @@ require 'flash/command/base'
 require 'pathname'
 
 class Flash::Command::Run < Flash::Command::Base
-  attr_accessor :color
   attr_accessor :project
 
   def initialize(command, group)
@@ -27,13 +26,13 @@ class Flash::Command::Run < Flash::Command::Base
 
   def run_command_in_group(command, group)
     projects(group).each do |project|
-      change_color!
+      color = new_color
       self.project = project
 
-      run("cd #{ project_dir }", verbose: false)
-      commands(command).each { |cmd| run(cmd) }
+      run("cd #{ project_dir }", verbose: false, color: color)
+      commands(command).each { |cmd| run(cmd, color: color) }
 
-      say ''
+      say '', color
     end
   end
 
@@ -43,8 +42,9 @@ class Flash::Command::Run < Flash::Command::Base
 
   def run(command, options = {})
     verbose = options[:verbose] || true
+    color   = options[:color]
 
-    prompt command if verbose
+    prompt(command, color) if verbose
     system "cd #{ project_dir } ; #{ command }"
   end
 
@@ -57,18 +57,18 @@ class Flash::Command::Run < Flash::Command::Base
     config['aliases'] || {}
   end
 
-  def prompt(message)
-    say "#{ project }> #{ message }"
+  def prompt(message, color)
+    say "#{ project }> #{ message }", color
   end
 
-  def say(stuff)
+  def say(stuff, color)
     prefix = "\e[38;5;#{ color }m"
     suffix = "\e[0m"
     system "echo '#{ prefix }#{ stuff }#{ suffix }'"
   end
 
-  def change_color!
-    self.color = rand((1..22)) * 10 + 2
+  def new_color
+    rand((1..22)) * 10 + 2
   end
 
   def project_dir
