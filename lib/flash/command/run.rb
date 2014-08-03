@@ -3,8 +3,6 @@ require 'flash/command/base'
 require 'pathname'
 
 class Flash::Command::Run < Flash::Command::Base
-  attr_accessor :project
-
   def initialize(command, group)
     @command = command
     @group = group
@@ -27,12 +25,11 @@ class Flash::Command::Run < Flash::Command::Base
   def run_command_in_group(command, group)
     projects(group).each do |project|
       color = new_color
-      self.project = project
 
-      run("cd #{ project_dir }", verbose: false, color: color)
-      commands(command).each { |cmd| run(cmd, color: color) }
+      run("cd #{ project_dir(project) }", verbose: false, color: color, project: project)
+      commands(command).each { |cmd| run(cmd, color: color, project: project) }
 
-      say '', color
+      say('', color)
     end
   end
 
@@ -43,9 +40,10 @@ class Flash::Command::Run < Flash::Command::Base
   def run(command, options = {})
     verbose = options[:verbose] || true
     color   = options[:color]
+    project = options[:project]
 
-    prompt(command, color) if verbose
-    system "cd #{ project_dir } ; #{ command }"
+    prompt(command, color: color, project: project) if verbose
+    system("cd #{ project_dir(project) } ; #{ command }")
   end
 
   def commands(alias_or_command)
@@ -57,8 +55,11 @@ class Flash::Command::Run < Flash::Command::Base
     config['aliases'] || {}
   end
 
-  def prompt(message, color)
-    say "#{ project }> #{ message }", color
+  def prompt(message, options)
+    color   = options[:color]
+    project = options[:project]
+
+    say("#{ project }> #{ message }", color)
   end
 
   def say(stuff, color)
@@ -71,7 +72,7 @@ class Flash::Command::Run < Flash::Command::Base
     rand((1..22)) * 10 + 2
   end
 
-  def project_dir
+  def project_dir(project)
     "#{ Dir.pwd }/#{ project }"
   end
 end
