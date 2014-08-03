@@ -10,6 +10,23 @@ describe Flash::CLI, :fakefs do
     end
   end
 
+  describe '#clone' do
+    before { write_config_file_with_clone }
+
+    describe 'flash clone projects' do
+      let(:output) { flash('clone projects') }
+
+      it 'should show done cloning messages' do
+        expect_any_instance_of(Flash::Command::Clone)
+          .to receive(:clone_single).exactly(3).times.and_return(nil)
+
+        expect(output).to match(/\[foo\] Done cloning project\./)
+        expect(output).to match(/\[bar\] Done cloning project\./)
+        expect(output).to match(/\[buz\] Done cloning project\./)
+      end
+    end
+  end
+
   describe '#info' do
     before { write_config_file }
 
