@@ -3,8 +3,6 @@ require 'flash/command/base'
 require 'pathname'
 
 class Flash::Command::Run < Flash::Command::Base
-  attr_reader :command
-
   attr_accessor :color
   attr_accessor :project
   attr_accessor :group
@@ -18,7 +16,7 @@ class Flash::Command::Run < Flash::Command::Base
     raise(ArgumentError, 'Missing required command and group parameters.') unless @command && @group
 
     unknown_group_and_exit unless valid_group?(group)
-    run_command_in_group
+    run_command_in_group(@command, @group)
   end
 
   private
@@ -28,7 +26,7 @@ class Flash::Command::Run < Flash::Command::Base
     exit 1
   end
 
-  def run_command_in_group
+  def run_command_in_group(command, group)
     projects.each do |project|
       change_color!
       self.project = project
