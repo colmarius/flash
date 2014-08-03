@@ -16,7 +16,7 @@ It allows one to define:
 - __aliases__ for sets of commands to be run on multiple directories
 - __groups__ for grouping together multiple directories
 
-Both groups and aliases can be defined in the _.flash.yml_ configuration file.
+Both groups and aliases can be defined in the `.flash.yml` configuration file.
 
 Motivation
 ----------
@@ -102,7 +102,7 @@ Running `flash` will give you the following output:
 Allows to clone all projects defined in a GROUP by using the clone git base
 URL.
 
-Getting back to our .flash.yml example file...
+Getting back to our `.flash.yml` example file...
 
 ```
 # .flash.yml
@@ -142,7 +142,7 @@ GROUP. With this command one can run same tasks on all projects of same GROUP.
 
 - command: can be a standalone command, or be defined in `aliases` section (where it must be a list of commands, semi-column separated)
 
-Getting back to our .flash.yml example file...
+Getting back to our `.flash.yml` example file...
 
 ```
 # .flash.yml
