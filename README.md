@@ -189,7 +189,7 @@ here are some commands you can run:
 Contributing
 ------------
 
-Please see [CONTRIBUTING.md](https://github.com/colmarius/flash/blob/update-docs/CONTRIBUTING.md).
+Please see [CONTRIBUTING.md](https://github.com/colmarius/flash/blob/master/CONTRIBUTING.md).
 
 Note
 ----
