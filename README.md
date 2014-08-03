@@ -27,7 +27,7 @@ A place to define both groups and aliases.
 
 __Inspect output__
 
-See the output of each command flash will run for you on a group of projects. 
+See the output of flash commands runned on a group of projects. 
 
 Installation
 ------------
@@ -76,12 +76,13 @@ clone:
 
 Here we define two groups _frontend_ and _libraries_. We will be allowed to run commands on each of these groups.
 
-Whereas _aliases_ and _clone_ are two special configuration sections:
+We can also define two special configuration sections:
 
-- __aliases__: allows two save repetitive and long commands as aliases
-- __clone__: allows to define a base git URL from where projects in a group can be cloned  
+- __aliases__: allows us two save repetitive and long commands
+- __clone__: allows to define a base __git__ URL from where projects in a group can be cloned
 
-With a flash configuration in your current workspace you are now set to run flash commands.
+With a valid `.flash.yml` configuration file set in your current workspace you
+are now set to run flash commands.
 
 Commands
 --------
@@ -123,7 +124,8 @@ Running the following command...
 
     flash clone frontend
 
-will clone from SuperDuper organization all projects defined in frontend group.
+will clone from SuperDuper organization all projects defined in _frontend_
+group.
 
 ### flash info
 
@@ -140,7 +142,8 @@ specified).
 The heart of flash is the __run__ command. It requires both a COMMAND and a 
 GROUP. With this command one can run same tasks on all projects of same GROUP.
 
-- command: can be a standalone command, or be defined in `aliases` section (where it must be a list of commands, semi-column separated)
+Note: COMMAND can be a standalone command, or be defined in `aliases` section
+(where it must be a list of commands, semi-column separated).
 
 Getting back to our `.flash.yml` example file...
 
@@ -161,8 +164,6 @@ libraries:
 aliases:
   update-master: git stash; git checkout master; git pull
   status: git status -s
-
-...
 ```
 
 here are some commands you can run:
@@ -174,7 +175,7 @@ here are some commands you can run:
     # Display status.
     flash run status frontend
 
-    # Lists some files.
+    # List some files.
     flash run ls frontend 
 
     # Lets push master branch to origin/staging (forced) for all frontend projects.
