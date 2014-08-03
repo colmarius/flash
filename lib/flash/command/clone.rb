@@ -2,8 +2,6 @@ require 'flash'
 require 'flash/command/base'
 
 class Flash::Command::Clone < Flash::Command::Base
-  attr_reader :group
-
   def initialize(group)
     @group = group
   end
@@ -11,24 +9,24 @@ class Flash::Command::Clone < Flash::Command::Base
   def execute
     raise(ArgumentError, 'Missing required group parameter.') unless @group
 
-    unknown_group_and_exit unless valid_group?(group)
-    clone_projects
+    unknown_group_and_exit(@group) unless valid_group?(@group)
+    clone_projects(@group)
   end
 
   private
 
-  def unknown_group_and_exit
+  def unknown_group_and_exit(group)
     puts "Unknown group \"#{group}\" in .flash.yml config."
     exit 1
   end
 
-  def clone_projects
-    projects.each do |project|
+  def clone_projects(group)
+    projects(group).each do |project|
       clone_single(project) unless File.exist?(project)
     end
   end
 
-  def projects
+  def projects(group)
     config[group] || []
   end
 
