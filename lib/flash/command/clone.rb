@@ -34,6 +34,7 @@ class Flash::Command::Clone < Flash::Command::Base
   def clone_projects(group)
     projects(group).each do |project|
       clone_single(project) unless File.exist?(project)
+      puts "\n[#{project}] Done cloning project.\n\n"
     end
   end
 
@@ -43,7 +44,6 @@ class Flash::Command::Clone < Flash::Command::Base
 
   def clone_single(project)
     system('git', 'clone', clone_path(project))
-    puts "\n[#{project}] Done cloning project.\n\n"
   end
 
   def clone_path(project)
