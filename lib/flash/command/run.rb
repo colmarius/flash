@@ -5,7 +5,6 @@ require 'pathname'
 class Flash::Command::Run < Flash::Command::Base
   attr_accessor :color
   attr_accessor :project
-  attr_accessor :group
 
   def initialize(command, group)
     @command = command
@@ -15,19 +14,19 @@ class Flash::Command::Run < Flash::Command::Base
   def execute
     raise(ArgumentError, 'Missing required command and group parameters.') unless @command && @group
 
-    unknown_group_and_exit unless valid_group?(group)
+    unknown_group_and_exit(@group) unless valid_group?(@group)
     run_command_in_group(@command, @group)
   end
 
   private
 
-  def unknown_group_and_exit
+  def unknown_group_and_exit(group)
     puts "Unknown group \"#{group}\" in .flash.yml config."
     exit 1
   end
 
   def run_command_in_group(command, group)
-    projects.each do |project|
+    projects(group).each do |project|
       change_color!
       self.project = project
 
@@ -38,7 +37,7 @@ class Flash::Command::Run < Flash::Command::Base
     end
   end
 
-  def projects
+  def projects(group)
     config[group]
   end
 
