@@ -46,7 +46,7 @@ same commands on multiple directories.</p>
 <strong>aliases</strong> for sets of commands to be run on multiple directories</li>
 <li>
 <strong>groups</strong> for grouping together multiple directories</li>
-</ul><p>Both groups and aliases can be defined in the <em>.flash.yml</em> configuration file.</p>
+</ul><p>Both groups and aliases can be defined in the <code>.flash.yml</code> configuration file.</p>
 
 <h2>
 <a name="motivation" class="anchor" href="#motivation"><span class="octicon octicon-link"></span></a>Motivation</h2>
@@ -57,7 +57,7 @@ same commands on multiple directories.</p>
 
 <p><strong>Inspect output</strong></p>
 
-<p>See the output of each command flash will run for you on a group of projects. </p>
+<p>See the output of flash commands runned on a group of projects. </p>
 
 <h2>
 <a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
@@ -103,15 +103,15 @@ clone:
 
 <p>Here we define two groups <em>frontend</em> and <em>libraries</em>. We will be allowed to run commands on each of these groups.</p>
 
-<p>Whereas <em>aliases</em> and <em>clone</em> are two special configuration sections:</p>
+<p>We can also define two special configuration sections:</p>
 
 <ul>
 <li>
-<strong>aliases</strong>: allows two save repetitive and long commands as aliases</li>
+<strong>aliases</strong>: allows us two save repetitive and long commands</li>
 <li>
-<strong>clone</strong>: allows to define a base git URL from where projects in a group can be cloned<br>
-</li>
-</ul><p>With a flash configuration in your current workspace you are now set to run flash commands.</p>
+<strong>clone</strong>: allows to define a base <strong>git</strong> URL from where projects in a group can be cloned</li>
+</ul><p>With a valid <code>.flash.yml</code> configuration file set in your current workspace you
+are now set to run flash commands.</p>
 
 <h2>
 <a name="commands" class="anchor" href="#commands"><span class="octicon octicon-link"></span></a>Commands</h2>
@@ -135,7 +135,7 @@ clone:
 <p>Allows to clone all projects defined in a GROUP by using the clone git base
 URL.</p>
 
-<p>Getting back to our .flash.yml example file...</p>
+<p>Getting back to our <code>.flash.yml</code> example file...</p>
 
 <pre><code># .flash.yml
 
@@ -156,7 +156,8 @@ clone:
 <pre><code>flash clone frontend
 </code></pre>
 
-<p>will clone from SuperDuper organization all projects defined in frontend group.</p>
+<p>will clone from SuperDuper organization all projects defined in <em>frontend</em>
+group.</p>
 
 <h3>
 <a name="flash-info" class="anchor" href="#flash-info"><span class="octicon octicon-link"></span></a>flash info</h3>
@@ -177,9 +178,10 @@ specified).</p>
 <p>The heart of flash is the <strong>run</strong> command. It requires both a COMMAND and a 
 GROUP. With this command one can run same tasks on all projects of same GROUP.</p>
 
-<ul>
-<li>command: can be a standalone command, or be defined in <code>aliases</code> section (where it must be a list of commands, semi-column separated)</li>
-</ul><p>Getting back to our .flash.yml example file...</p>
+<p>Note: COMMAND can be a standalone command, or be defined in <code>aliases</code> section
+(where it must be a list of commands, semi-column separated).</p>
+
+<p>Getting back to our <code>.flash.yml</code> example file...</p>
 
 <pre><code># .flash.yml
 
@@ -197,8 +199,6 @@ libraries:
 aliases:
   update-master: git stash; git checkout master; git pull
   status: git status -s
-
-...
 </code></pre>
 
 <p>here are some commands you can run:</p>
@@ -210,7 +210,7 @@ flash run update-master libraries
 # Display status.
 flash run status frontend
 
-# Lists some files.
+# List some files.
 flash run ls frontend 
 
 # Lets push master branch to origin/staging (forced) for all frontend projects.
