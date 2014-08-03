@@ -44,17 +44,7 @@ describe Flash::Command::Clone, :fakefs do
       end
 
       describe 'with clone git endpoint' do
-        before do
-          contents = <<-CONTENTS
-            projects:
-              - foo
-              - bar
-              - buz
-            clone:
-              git: git@github.com:SuperDuper
-          CONTENTS
-          write_config_file(contents: contents)
-        end
+        before { write_config_file_with_clone }
 
         it 'should clone projects in group' do
           expect(subject).to receive(:clone_projects).with(@group).once

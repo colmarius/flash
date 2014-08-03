@@ -35,6 +35,15 @@ def flash(args)
   end
 end
 
+def write_config_file_with_clone
+  clone_contents = <<-SECTION
+    clone:
+      git: git@github.com:SuperDuper
+  SECTION
+
+  write_config_file(contents: default_contents + clone_contents)
+end
+
 def write_config_file(options = {})
   config_file = options[:config_file] || '.flash.yml'
   contents    = options[:contents] || default_contents
