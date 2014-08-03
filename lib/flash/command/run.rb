@@ -30,7 +30,7 @@ class Flash::Command::Run < Flash::Command::Base
       change_color!
       self.project = project
 
-      run "cd #{ project_dir }", false
+      run("cd #{ project_dir }", verbose: false)
       commands(command).each { |cmd| run(cmd) }
 
       say ''
@@ -41,7 +41,9 @@ class Flash::Command::Run < Flash::Command::Base
     config[group]
   end
 
-  def run(command, verbose = true)
+  def run(command, options = {})
+    verbose = options[:verbose] || true
+
     prompt command if verbose
     system "cd #{ project_dir } ; #{ command }"
   end
