@@ -28,37 +28,210 @@
 
     <div class="container">
       <section id="main_content">
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+        <h1>
+<a name="flash" class="anchor" href="#flash"><span class="octicon octicon-link"></span></a>Flash</h1>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+<p><a href="http://badge.fury.io/rb/flash"><img src="https://badge.fury.io/rb/flash.svg" alt="Gem Version"></a>
+<a href="https://travis-ci.org/colmarius/flash?branch=master"><img src="https://travis-ci.org/colmarius/flash.svg?branch=master" alt="Build Status"></a></p>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
+<p>Hello! This gem is currently under development towards <em>0.1.0 version</em>!</p>
+
+<h2>
+<a name="overview" class="anchor" href="#overview"><span class="octicon octicon-link"></span></a>Overview</h2>
+
+<p>Main purpose of Flash is to eliminate repetitive tasks, those of running the
+same commands on multiple directories.</p>
+
+<p>It allows one to define:</p>
+
+<ul>
+<li>
+<strong>aliases</strong> for sets of commands to be run on multiple directories</li>
+<li>
+<strong>groups</strong> for grouping together multiple directories</li>
+</ul><p>Both groups and aliases can be defined in the <em>.flash.yml</em> configuration file.</p>
+
+<h2>
+<a name="motivation" class="anchor" href="#motivation"><span class="octicon octicon-link"></span></a>Motivation</h2>
+
+<p><strong>Simple configuration file</strong></p>
+
+<p>A place to define both groups and aliases.</p>
+
+<p><strong>Inspect output</strong></p>
+
+<p>See the output of each command flash will run for you on a group of projects. </p>
+
+<h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>You can either install the gem manually:</p>
+
+<div class="highlight highlight-bash"><pre>gem install flash
+</pre></div>
+
+<p>or add it to your Gemfile:</p>
+
+<div class="highlight highlight-ruby"><pre><span class="n">group</span> <span class="ss">:development</span> <span class="k">do</span>
+  <span class="n">gem</span> <span class="s1">'flash'</span>
+<span class="k">end</span>
+</pre></div>
+
+<h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>Flash requires a <code>.flash.yml</code> file in order to function. This should be
+defined at the root of your workspace folder.</p>
+
+<pre><code># .flash.yml
+
+frontend:
+  - super-product1
+  - super-product2
+  - super-api
+  - super-sso
+
+libraries:
+  - super-rest-client
+  - super-core-js
+  - super-core-css
+
+aliases:
+  update-master: git stash; git checkout master; git pull
+  status: git status -s
+
+clone:
+  git: git@github.com:SuperDuper
 </code></pre>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<p>Here we define two groups <em>frontend</em> and <em>libraries</em>. We will be allowed to run commands on each of these groups.</p>
+
+<p>Whereas <em>aliases</em> and <em>clone</em> are two special configuration sections:</p>
+
+<ul>
+<li>
+<strong>aliases</strong>: allows two save repetitive and long commands as aliases</li>
+<li>
+<strong>clone</strong>: allows to define a base git URL from where projects in a group can be cloned<br>
+</li>
+</ul><p>With a flash configuration in your current workspace you are now set to run flash commands.</p>
+
+<h2>
+<a name="commands" class="anchor" href="#commands"><span class="octicon octicon-link"></span></a>Commands</h2>
+
+<p>Running <code>flash</code> will give you the following output:</p>
+
+<pre><code>Commands:
+  flash clone GROUP        # Clone all projects found in GROUP config file
+  flash help [COMMAND]     # Describe available commands or one specific command
+  flash info [GROUP]       # Display information from config file
+  flash run COMMAND GROUP  # Run one or more COMMAND(s) on the specified GROUP
+  flash version            # Display Flash gem version
+</code></pre>
 
 <h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+<a name="flash-clone" class="anchor" href="#flash-clone"><span class="octicon octicon-link"></span></a>flash clone</h3>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<pre><code>flash clone GROUP
+</code></pre>
+
+<p>Allows to clone all projects defined in a GROUP by using the clone git base
+URL.</p>
+
+<p>Getting back to our .flash.yml example file...</p>
+
+<pre><code># .flash.yml
+
+frontend:
+  - super-product1
+  - super-product2
+  - super-api
+  - super-sso
+
+...
+
+clone:
+  git: git@github.com:SuperDuper
+</code></pre>
+
+<p>Running the following command...</p>
+
+<pre><code>flash clone frontend
+</code></pre>
+
+<p>will clone from SuperDuper organization all projects defined in frontend group.</p>
 
 <h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+<a name="flash-info" class="anchor" href="#flash-info"><span class="octicon octicon-link"></span></a>flash info</h3>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<pre><code>flash info [GROUP]
+</code></pre>
+
+<p>This is a helper command for printing <code>.flash.yml</code> contents. Prints all file
+contents or just part of it (depending if group or other config section is
+specified).</p>
 
 <h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+<a name="flash-run" class="anchor" href="#flash-run"><span class="octicon octicon-link"></span></a>flash run</h3>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<pre><code>flash run COMMAND GROUP
+</code></pre>
 
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+<p>The heart of flash is the <strong>run</strong> command. It requires both a COMMAND and a 
+GROUP. With this command one can run same tasks on all projects of same GROUP.</p>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+<ul>
+<li>command: can be a standalone command, or be defined in <code>aliases</code> section (where it must be a list of commands, semi-column separated)</li>
+</ul><p>Getting back to our .flash.yml example file...</p>
+
+<pre><code># .flash.yml
+
+frontend:
+  - super-product1
+  - super-product2
+  - super-api
+  - super-sso
+
+libraries:
+  - super-rest-client
+  - super-core-js
+  - super-core-css
+
+aliases:
+  update-master: git stash; git checkout master; git pull
+  status: git status -s
+
+...
+</code></pre>
+
+<p>here are some commands you can run:</p>
+
+<pre><code># Update master branch.
+flash run update-master frontend
+flash run update-master libraries
+
+# Display status.
+flash run status frontend
+
+# Lists some files.
+flash run ls frontend 
+
+# Lets push master branch to origin/staging (forced) for all frontend projects.
+flash run "git checkout master ; git checkout -B staging ; git push -f ; git checkout master" frontend
+
+# This last command could be aliased to `master-to-staging`, which would result in:
+flash run master-to-staging frontend
+</code></pre>
+
+<h2>
+<a name="contributing" class="anchor" href="#contributing"><span class="octicon octicon-link"></span></a>Contributing</h2>
+
+<p>Please see <a href="https://github.com/colmarius/flash/blob/update-docs/CONTRIBUTING.md">CONTRIBUTING.md</a>.</p>
+
+<h2>
+<a name="note" class="anchor" href="#note"><span class="octicon octicon-link"></span></a>Note</h2>
+
+<p>This is a project to level up my gem skills.</p>
       </section>
     </div>
 
