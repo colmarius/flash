@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'flash/command/info'
 
 describe Flash::Command::Info, :fakefs do
-  subject { Flash::Command::Info.new(group) }
+  subject { described_class.new(group) }
 
   before { write_config_file }
 

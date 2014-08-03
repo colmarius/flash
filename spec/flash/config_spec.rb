@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'flash/config'
 
 describe Flash::Config, :fakefs  do
-  subject { Flash::Config.new }
+  subject { described_class.new }
 
   describe '#initialize' do
     it 'can load from a file' do

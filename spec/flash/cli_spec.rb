@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'flash/cli'
 
 describe Flash::CLI, :fakefs do
-  subject { Flash::CLI }
+  subject { described_class }
 
   describe '.is_thor_reserved_word?' do
     it 'should allow "run" to be defined as command' do
