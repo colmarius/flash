@@ -18,7 +18,7 @@ describe Flash::CLI, :fakefs do
 
       it 'should show done cloning messages' do
         expect_any_instance_of(Flash::Command::Clone)
-          .to receive(:clone_single).exactly(3).times.and_return(nil)
+          .to receive(:system).exactly(3).times.and_return(nil)
 
         expect(output).to match(/\[foo\] Done cloning project\./)
         expect(output).to match(/\[bar\] Done cloning project\./)
