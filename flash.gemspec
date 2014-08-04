@@ -5,7 +5,7 @@ require "flash/version"
 
 Gem::Specification.new do |gem|
   gem.name    = "flash"
-  gem.license = "MIT"
+  gem.license = "Apache-2.0"
   gem.version = Flash::VERSION
 
   gem.author   = ["Marius Colacioiu"]
