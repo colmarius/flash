@@ -63,6 +63,21 @@ describe Flash::CLI, :fakefs do
     end
   end
 
+  describe '#run' do
+    before { write_config_file }
+
+    describe 'flash run ls projects' do
+      let(:output) { flash('run ls projects') }
+
+      it 'should not raise error' do
+        expect_any_instance_of(Flash::Command::Run)
+          .to receive(:system).exactly(15).times
+
+        output
+      end
+    end
+  end
+
   describe '#version' do
     let(:output) { flash('version') }
 
