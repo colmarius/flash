@@ -38,7 +38,7 @@ class Flash::Command::Run < Flash::Command::Base
   end
 
   def run(command, options = {})
-    verbose = options[:verbose] || true
+    verbose = options[:verbose].nil? ? true : options[:verbose]
     color   = options[:color]
     project = options[:project]
 
