@@ -6,8 +6,6 @@ Flash
 
 ![flash](http://colmarius.net/flash/images/flashtocat.png)
 
-Hello! This gem is currently under development towards _0.1.0 version_!
-
 Overview
 --------
 
