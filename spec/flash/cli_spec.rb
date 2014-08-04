@@ -71,7 +71,7 @@ describe Flash::CLI, :fakefs do
 
       it 'should not raise error' do
         expect_any_instance_of(Flash::Command::Run)
-          .to receive(:system).exactly(15).times
+          .to receive(:system).exactly(12).times
 
         output
       end

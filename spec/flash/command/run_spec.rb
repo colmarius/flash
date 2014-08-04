@@ -39,7 +39,7 @@ describe Flash::Command::Run, :fakefs do
         @command = 'ls'
         @group = 'projects'
         expect_any_instance_of(described_class)
-          .to receive(:system).exactly(15).times
+          .to receive(:system).exactly(12).times
         subject.execute
       end
 
