@@ -3,12 +3,6 @@ require 'flash/command/base'
 require 'pathname'
 
 class Flash::Command::Run < Flash::Command::Base
-  attr_reader :command
-
-  attr_accessor :color
-  attr_accessor :project
-  attr_accessor :group
-
   def initialize(command, group)
     @command = command
     @group = group
@@ -17,36 +11,39 @@ class Flash::Command::Run < Flash::Command::Base
   def execute
     raise(ArgumentError, 'Missing required command and group parameters.') unless @command && @group
 
-    unknown_group_and_exit unless valid_group?(group)
-    run_command_in_group
+    unknown_group_and_exit(@group) unless valid_group?(@group)
+    run_command_in_group(@command, @group)
   end
 
   private
 
-  def unknown_group_and_exit
+  def unknown_group_and_exit(group)
     puts "Unknown group \"#{group}\" in .flash.yml config."
     exit 1
   end
 
-  def run_command_in_group
-    projects.each do |project|
-      change_color!
-      self.project = project
+  def run_command_in_group(command, group)
+    projects(group).each do |project|
+      color = new_color
 
-      run "cd #{ project_dir }", false
-      commands(command).each { |cmd| run(cmd) }
+      run("cd #{ project_dir(project) }", verbose: false, color: color, project: project)
+      commands(command).each { |cmd| run(cmd, color: color, project: project) }
 
-      say ''
+      say('', color)
     end
   end
 
-  def projects
+  def projects(group)
     config[group]
   end
 
-  def run(command, verbose = true)
-    prompt command if verbose
-    system "cd #{ project_dir } ; #{ command }"
+  def run(command, options = {})
+    verbose = options[:verbose] || true
+    color   = options[:color]
+    project = options[:project]
+
+    prompt(command, color: color, project: project) if verbose
+    system("cd #{ project_dir(project) } ; #{ command }")
   end
 
   def commands(alias_or_command)
@@ -58,21 +55,24 @@ class Flash::Command::Run < Flash::Command::Base
     config['aliases'] || {}
   end
 
-  def prompt(message)
-    say "#{ project }> #{ message }"
+  def prompt(message, options)
+    color   = options[:color]
+    project = options[:project]
+
+    say("#{ project }> #{ message }", color)
   end
 
-  def say(stuff)
+  def say(stuff, color)
     prefix = "\e[38;5;#{ color }m"
     suffix = "\e[0m"
     system "echo '#{ prefix }#{ stuff }#{ suffix }'"
   end
 
-  def change_color!
-    self.color = rand((1..22)) * 10 + 2
+  def new_color
+    rand((1..22)) * 10 + 2
   end
 
-  def project_dir
+  def project_dir(project)
     "#{ Dir.pwd }/#{ project }"
   end
 end
