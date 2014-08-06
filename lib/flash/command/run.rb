@@ -44,7 +44,8 @@ module Flash
         project = options[:project]
 
         prompt(command, color: color, project: project) if verbose
-        system("cd #{ project_dir(project) } ; #{ command }")
+        system('cd', project_dir(project))
+        system('cd', command)
       end
 
       def commands(alias_or_command)
