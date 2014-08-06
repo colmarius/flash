@@ -26,7 +26,7 @@ class Flash::Command::Run < Flash::Command::Base
     projects(group).each do |project|
       color = new_color
 
-      system("cd #{ project_dir(project) }")
+      system('cd', project_dir(project))
       commands(command).each { |cmd| run(cmd, color: color, project: project) }
 
       say('', color)

@@ -11,6 +11,6 @@ class Flash::Command::Base
   end
 
   def valid_group?(group)
-    (group && config[group]) ? true : false
+    config && config.key?(group)
   end
 end
