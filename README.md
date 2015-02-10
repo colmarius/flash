@@ -9,7 +9,7 @@ Flash
 Table of Contents
 -----------------
 
-- [Overview](#overview)
+- [What is Flash?](#what-is-flash)
 - [Motivation](#motivation)
 - [Installation](#installation)
 - [Usage](#usage)
@@ -19,8 +19,8 @@ Table of Contents
   - [flash run](#flash-run)
 - [Contributing](#contributing)
 
-Overview
---------
+What is Flash?
+--------------
 
 Main purpose of Flash is to eliminate repetitive tasks, those of running the
 same commands on multiple directories.
