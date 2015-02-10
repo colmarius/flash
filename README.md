@@ -10,7 +10,7 @@
 - [What is Flash?](#what-is-flash)
 - [Motivation](#motivation)
 - [Installation](#installation)
-- [Usage](#usage)
+- [Basic Usage](#basic-usage)
 - [Commands](#commands)
   - [flash clone](#flash-clone)
   - [flash info](#flash-info)
@@ -18,7 +18,6 @@
 - [Contributing](#contributing)
 
 ## What is Flash?
-
 
 Main purpose of Flash is to eliminate repetitive tasks, those of running the
 same commands on multiple directories.
@@ -55,7 +54,7 @@ group :development do
 end
 ```
 
-## Usage
+## Basic Usage
 
 Flash requires a `.flash.yml` file in order to function. This should be
 defined at the root of your workspace folder.
