@@ -16,6 +16,7 @@
   - [flash info](#flash-info)
   - [flash run](#flash-run)
 - [Contributing](#contributing)
+- [License](#license)
 
 ## What is Flash?
 
@@ -183,3 +184,7 @@ here are some commands you can run:
 ## Contributing
 
 Please see [CONTRIBUTING.md](https://github.com/colmarius/flash/blob/master/CONTRIBUTING.md).
+
+## License
+
+APACHE-2.0 See LICENSE for details.
