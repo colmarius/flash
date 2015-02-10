@@ -7,7 +7,6 @@ describe Flash::Command::Clone, :fakefs do
   before { write_config_file }
 
   describe '#execute' do
-
     context 'with invalid group' do
       it 'with nil group' do
         @group = nil

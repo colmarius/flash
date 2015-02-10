@@ -1,13 +1,24 @@
-Flash
-=====
+<img src="http://colmarius.net/flash/images/flashtocat.png" align="right" width="100px"/>
+
+# Flash
 
 [![Gem Version](https://badge.fury.io/rb/flash.svg)](http://badge.fury.io/rb/flash)
 [![Build Status](https://travis-ci.org/colmarius/flash.svg?branch=master)](https://travis-ci.org/colmarius/flash?branch=master)
 
-![flash](http://colmarius.net/flash/images/flashtocat.png)
+## Table of Contents
 
-Overview
---------
+- [What is Flash?](#what-is-flash)
+- [Motivation](#motivation)
+- [Installation](#installation)
+- [Basic Usage](#basic-usage)
+- [Commands](#commands)
+  - [flash clone](#flash-clone)
+  - [flash info](#flash-info)
+  - [flash run](#flash-run)
+- [Contributing](#contributing)
+- [License](#license)
+
+## What is Flash?
 
 Main purpose of Flash is to eliminate repetitive tasks, those of running the
 same commands on multiple directories.
@@ -18,8 +29,7 @@ It allows one to define:
 
 Both groups and aliases can be defined in the `.flash.yml` configuration file.
 
-Motivation
-----------
+## Motivation
 
 __Simple configuration file__
 
@@ -29,25 +39,13 @@ __Inspect output__
 
 See the output of flash commands runned on a group of projects. 
 
-Installation
-------------
-
-You can either install the gem manually:
+## Installation
 
 ```bash
 gem install flash
 ```
 
-or add it to your Gemfile:
-
-```ruby
-group :development do
-  gem 'flash'
-end
-```
-
-Usage
------
+## Basic Usage
 
 Flash requires a `.flash.yml` file in order to function. This should be
 defined at the root of your workspace folder.
@@ -84,8 +82,7 @@ We can also define two special configuration sections:
 With a valid `.flash.yml` configuration file set in your current workspace you
 are now set to run flash commands.
 
-Commands
---------
+## Commands
 
 Running `flash` will give you the following output:
 
@@ -184,12 +181,10 @@ here are some commands you can run:
     # This last command could be aliased to `master-to-staging`, which would result in:
     flash run master-to-staging frontend
 
-Contributing
-------------
+## Contributing
 
 Please see [CONTRIBUTING.md](https://github.com/colmarius/flash/blob/master/CONTRIBUTING.md).
 
-Note
-----
+## License
 
-This is a project to level up my gem skills.
+APACHE-2.0 See LICENSE for details.
