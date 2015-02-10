@@ -1,10 +1,10 @@
+<img src="http://colmarius.net/flash/images/flashtocat.png" align="right" width="100px"/>
+
 Flash
 =====
 
 [![Gem Version](https://badge.fury.io/rb/flash.svg)](http://badge.fury.io/rb/flash)
 [![Build Status](https://travis-ci.org/colmarius/flash.svg?branch=master)](https://travis-ci.org/colmarius/flash?branch=master)
-
-![flash](http://colmarius.net/flash/images/flashtocat.png)
 
 Overview
 --------
