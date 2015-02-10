@@ -1,5 +1,7 @@
 ### HEAD
 
+- updated docs
+
 ### v0.1.0
 
 - flash with subcommands: `clone`, `info` and `run`
