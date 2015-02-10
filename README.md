@@ -40,18 +40,8 @@ See the output of flash commands runned on a group of projects.
 
 ## Installation
 
-You can either install the gem manually:
-
 ```bash
 gem install flash
-```
-
-or add it to your Gemfile:
-
-```ruby
-group :development do
-  gem 'flash'
-end
 ```
 
 ## Basic Usage
