@@ -1,13 +1,11 @@
 <img src="http://colmarius.net/flash/images/flashtocat.png" align="right" width="100px"/>
 
-Flash
-=====
+# Flash
 
 [![Gem Version](https://badge.fury.io/rb/flash.svg)](http://badge.fury.io/rb/flash)
 [![Build Status](https://travis-ci.org/colmarius/flash.svg?branch=master)](https://travis-ci.org/colmarius/flash?branch=master)
 
-Table of Contents
------------------
+## Table of Contents
 
 - [What is Flash?](#what-is-flash)
 - [Motivation](#motivation)
@@ -19,8 +17,8 @@ Table of Contents
   - [flash run](#flash-run)
 - [Contributing](#contributing)
 
-What is Flash?
---------------
+## What is Flash?
+
 
 Main purpose of Flash is to eliminate repetitive tasks, those of running the
 same commands on multiple directories.
@@ -31,8 +29,7 @@ It allows one to define:
 
 Both groups and aliases can be defined in the `.flash.yml` configuration file.
 
-Motivation
-----------
+## Motivation
 
 __Simple configuration file__
 
@@ -42,8 +39,7 @@ __Inspect output__
 
 See the output of flash commands runned on a group of projects. 
 
-Installation
-------------
+## Installation
 
 You can either install the gem manually:
 
@@ -59,8 +55,7 @@ group :development do
 end
 ```
 
-Usage
------
+## Usage
 
 Flash requires a `.flash.yml` file in order to function. This should be
 defined at the root of your workspace folder.
@@ -97,8 +92,7 @@ We can also define two special configuration sections:
 With a valid `.flash.yml` configuration file set in your current workspace you
 are now set to run flash commands.
 
-Commands
---------
+## Commands
 
 Running `flash` will give you the following output:
 
@@ -197,8 +191,7 @@ here are some commands you can run:
     # This last command could be aliased to `master-to-staging`, which would result in:
     flash run master-to-staging frontend
 
-Contributing
-------------
+## Contributing
 
 Please see [CONTRIBUTING.md](https://github.com/colmarius/flash/blob/master/CONTRIBUTING.md).
 
