@@ -1,38 +1,72 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
-
     <title>flash by colmarius</title>
-  </head>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
+  </head>
   <body>
 
-    <header>
-      <div class="container">
+      <header>
         <h1>flash</h1>
-        <h2>Run same commands on multiple projects.</h2>
+        <p>Run same commands on multiple projects.</p>
+      </header>
 
-        <section id="downloads">
-          <a href="https://github.com/colmarius/flash/zipball/master" class="btn">Download as .zip</a>
-          <a href="https://github.com/colmarius/flash/tarball/master" class="btn">Download as .tar.gz</a>
-          <a href="https://github.com/colmarius/flash" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
-        </section>
-      </div>
-    </header>
+      <div id="banner">
+        <span id="logo"></span>
 
-    <div class="container">
-      <section id="main_content">
-        <p><a href="http://badge.fury.io/rb/flash"><img src="https://badge.fury.io/rb/flash.svg" alt="Gem Version"></a>
+        <a href="https://github.com/colmarius/flash" class="button fork"><strong>View On GitHub</strong></a>
+        <div class="downloads">
+          <span>Downloads:</span>
+          <ul>
+            <li><a href="https://github.com/colmarius/flash/zipball/master" class="button">ZIP</a></li>
+            <li><a href="https://github.com/colmarius/flash/tarball/master" class="button">TAR</a></li>
+          </ul>
+        </div>
+      </div><!-- end banner -->
+
+    <div class="wrapper">
+      <nav>
+        <ul></ul>
+      </nav>
+      <section>
+        <p><img src="http://colmarius.net/flash/images/flashtocat.png" align="right" width="100px"></p>
+
+<p><a href="http://badge.fury.io/rb/flash"><img src="https://badge.fury.io/rb/flash.svg" alt="Gem Version"></a>
 <a href="https://travis-ci.org/colmarius/flash?branch=master"><img src="https://travis-ci.org/colmarius/flash.svg?branch=master" alt="Build Status"></a></p>
 
 <h2>
-<a name="overview" class="anchor" href="#overview"><span class="octicon octicon-link"></span></a>Overview</h2>
+<a id="table-of-contents" class="anchor" href="#table-of-contents" aria-hidden="true"><span class="octicon octicon-link"></span></a>Table of Contents</h2>
+
+<ul>
+<li><a href="#what-is-flash">What is Flash?</a></li>
+<li><a href="#motivation">Motivation</a></li>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#basic-usage">Basic Usage</a></li>
+<li>
+<a href="#commands">Commands</a>
+
+<ul>
+<li><a href="#flash-clone">flash clone</a></li>
+<li><a href="#flash-info">flash info</a></li>
+<li><a href="#flash-run">flash run</a></li>
+</ul>
+</li>
+<li><a href="#contributing">Contributing</a></li>
+<li><a href="#license">License</a></li>
+</ul>
+
+<h2>
+<a id="what-is-flash" class="anchor" href="#what-is-flash" aria-hidden="true"><span class="octicon octicon-link"></span></a>What is Flash?</h2>
 
 <p>Main purpose of Flash is to eliminate repetitive tasks, those of running the
 same commands on multiple directories.</p>
@@ -44,10 +78,12 @@ same commands on multiple directories.</p>
 <strong>aliases</strong> for sets of commands to be run on multiple directories</li>
 <li>
 <strong>groups</strong> for grouping together multiple directories</li>
-</ul><p>Both groups and aliases can be defined in the <code>.flash.yml</code> configuration file.</p>
+</ul>
+
+<p>Both groups and aliases can be defined in the <code>.flash.yml</code> configuration file.</p>
 
 <h2>
-<a name="motivation" class="anchor" href="#motivation"><span class="octicon octicon-link"></span></a>Motivation</h2>
+<a id="motivation" class="anchor" href="#motivation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Motivation</h2>
 
 <p><strong>Simple configuration file</strong></p>
 
@@ -58,22 +94,12 @@ same commands on multiple directories.</p>
 <p>See the output of flash commands runned on a group of projects. </p>
 
 <h2>
-<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
 
-<p>You can either install the gem manually:</p>
-
-<div class="highlight highlight-bash"><pre>gem install flash
-</pre></div>
-
-<p>or add it to your Gemfile:</p>
-
-<div class="highlight highlight-ruby"><pre><span class="n">group</span> <span class="ss">:development</span> <span class="k">do</span>
-  <span class="n">gem</span> <span class="s1">'flash'</span>
-<span class="k">end</span>
-</pre></div>
+<div class="highlight highlight-bash"><pre>gem install flash</pre></div>
 
 <h2>
-<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+<a id="basic-usage" class="anchor" href="#basic-usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Basic Usage</h2>
 
 <p>Flash requires a <code>.flash.yml</code> file in order to function. This should be
 defined at the root of your workspace folder.</p>
@@ -108,11 +134,13 @@ clone:
 <strong>aliases</strong>: allows us two save repetitive and long commands</li>
 <li>
 <strong>clone</strong>: allows to define a base <strong>git</strong> URL from where projects in a group can be cloned</li>
-</ul><p>With a valid <code>.flash.yml</code> configuration file set in your current workspace you
+</ul>
+
+<p>With a valid <code>.flash.yml</code> configuration file set in your current workspace you
 are now set to run flash commands.</p>
 
 <h2>
-<a name="commands" class="anchor" href="#commands"><span class="octicon octicon-link"></span></a>Commands</h2>
+<a id="commands" class="anchor" href="#commands" aria-hidden="true"><span class="octicon octicon-link"></span></a>Commands</h2>
 
 <p>Running <code>flash</code> will give you the following output:</p>
 
@@ -125,7 +153,7 @@ are now set to run flash commands.</p>
 </code></pre>
 
 <h3>
-<a name="flash-clone" class="anchor" href="#flash-clone"><span class="octicon octicon-link"></span></a>flash clone</h3>
+<a id="flash-clone" class="anchor" href="#flash-clone" aria-hidden="true"><span class="octicon octicon-link"></span></a>flash clone</h3>
 
 <pre><code>flash clone GROUP
 </code></pre>
@@ -158,7 +186,7 @@ clone:
 group.</p>
 
 <h3>
-<a name="flash-info" class="anchor" href="#flash-info"><span class="octicon octicon-link"></span></a>flash info</h3>
+<a id="flash-info" class="anchor" href="#flash-info" aria-hidden="true"><span class="octicon octicon-link"></span></a>flash info</h3>
 
 <pre><code>flash info [GROUP]
 </code></pre>
@@ -168,7 +196,7 @@ contents or just part of it (depending if group or other config section is
 specified).</p>
 
 <h3>
-<a name="flash-run" class="anchor" href="#flash-run"><span class="octicon octicon-link"></span></a>flash run</h3>
+<a id="flash-run" class="anchor" href="#flash-run" aria-hidden="true"><span class="octicon octicon-link"></span></a>flash run</h3>
 
 <pre><code>flash run COMMAND GROUP
 </code></pre>
@@ -219,17 +247,21 @@ flash run master-to-staging frontend
 </code></pre>
 
 <h2>
-<a name="contributing" class="anchor" href="#contributing"><span class="octicon octicon-link"></span></a>Contributing</h2>
+<a id="contributing" class="anchor" href="#contributing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributing</h2>
 
 <p>Please see <a href="https://github.com/colmarius/flash/blob/master/CONTRIBUTING.md">CONTRIBUTING.md</a>.</p>
 
 <h2>
-<a name="note" class="anchor" href="#note"><span class="octicon octicon-link"></span></a>Note</h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
 
-<p>This is a project to level up my gem skills.</p>
+<p>APACHE-2.0 See LICENSE for details.</p>
       </section>
+      <footer>
+        <p>Project maintained by <a href="https://github.com/colmarius">colmarius</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
+      </footer>
     </div>
-
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
               <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
