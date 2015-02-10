@@ -6,6 +6,19 @@ Flash
 [![Gem Version](https://badge.fury.io/rb/flash.svg)](http://badge.fury.io/rb/flash)
 [![Build Status](https://travis-ci.org/colmarius/flash.svg?branch=master)](https://travis-ci.org/colmarius/flash?branch=master)
 
+Table of Contents
+-----------------
+
+- [Overview](#overview)
+- [Motivation](#motivation)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Commands](#commands)
+  - [flash clone](#flash-clone)
+  - [flash info](#flash-info)
+  - [flash run](#flash-run)
+- [Contributing](#contributing)
+
 Overview
 --------
 
