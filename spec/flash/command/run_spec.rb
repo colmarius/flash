@@ -7,9 +7,7 @@ describe Flash::Command::Run, :fakefs do
   before { write_config_file }
 
   describe '#execute' do
-
     context 'with invalid args' do
-
       it 'command and group are nil' do
         @command, @group = [nil, nil]
         expect { subject.execute }.to raise_error ArgumentError
@@ -34,7 +32,6 @@ describe Flash::Command::Run, :fakefs do
     end
 
     context 'with valid args' do
-
       it 'example run ls command on projects group' do
         @command = 'ls'
         @group = 'projects'
