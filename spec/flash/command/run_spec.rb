@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'flash/command/run'
 
-describe Flash::Command::Run, :fakefs do
+RSpec.describe Flash::Command::Run, :fakefs do
   subject { described_class.new(@command, @group) }
 
   before { write_config_file }

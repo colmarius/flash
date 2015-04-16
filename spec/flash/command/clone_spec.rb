@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'flash/command/clone'
 
-describe Flash::Command::Clone, :fakefs do
+RSpec.describe Flash::Command::Clone, :fakefs do
   subject { described_class.new(@group) }
 
   before { write_config_file }

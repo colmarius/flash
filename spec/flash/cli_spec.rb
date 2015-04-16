@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'flash/cli'
 
-describe Flash::CLI, :fakefs do
+RSpec.describe Flash::CLI, :fakefs do
   subject { described_class }
 
   describe '.is_thor_reserved_word?' do

@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'flash/command/info'
 
-describe Flash::Command::Info, :fakefs do
+RSpec.describe Flash::Command::Info, :fakefs do
   subject { described_class.new(group) }
 
   before { write_config_file }
