@@ -25,8 +25,3 @@ RuboCop::RakeTask.new(:rubocop) do |task|
   task.patterns = ['exe/flash', 'lib/**/*.rb', 'spec/**/*.rb']
   task.fail_on_error = false
 end
-
-desc "Open an irb session preloaded with this library"
-task :console do
-  sh "irb -I lib -r flash/cli.rb"
-end
