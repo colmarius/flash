@@ -1,4 +1,4 @@
-require 'flash/version'
+require 'flash/cli'
 
 module Flash
 end

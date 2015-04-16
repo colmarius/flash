@@ -1,16 +1,18 @@
-require 'flash'
-require 'flash/command'
 require 'flash/config'
 
-class Flash::Command::Base
-  def initialize
-  end
+module Flash
+  module Command
+    class Base
+      def initialize
+      end
 
-  def config
-    @config ||= Flash::Config.new
-  end
+      def config
+        @config ||= Flash::Config.new
+      end
 
-  def valid_group?(group)
-    config && config.key?(group)
+      def valid_group?(group)
+        config && config.key?(group)
+      end
+    end
   end
 end
