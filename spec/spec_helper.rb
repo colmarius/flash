@@ -7,9 +7,10 @@ require 'fakefs/spec_helpers'
 Dir[File.expand_path('../support/*.rb', __FILE__)].each { |file| require file }
 
 RSpec.configure do |config|
+  config.include(FakeFS::SpecHelpers, :fakefs)
+  config.include(HelperMethods)
+
   config.color = true
   config.order = 'rand'
   config.raise_errors_for_deprecations!
-  config.include(FakeFS::SpecHelpers, :fakefs)
-  config.include(HelperMethods)
 end
