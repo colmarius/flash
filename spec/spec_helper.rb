@@ -1,10 +1,10 @@
+$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
+
 require 'rspec'
 require 'fakefs/safe'
 require 'fakefs/spec_helpers'
 
 Dir[File.expand_path('../support/*.rb', __FILE__)].each { |file| require file }
-
-$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 
 RSpec.configure do |config|
   config.color = true
