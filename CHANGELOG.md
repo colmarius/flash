@@ -1,6 +1,7 @@
 ### HEAD
 
 - updated docs
+- refactored spec and lib
 
 ### v0.1.0
 
