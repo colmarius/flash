@@ -44,7 +44,7 @@ module Flash
         project = options[:project]
 
         prompt(command, color: color, project: project) if verbose
-        system("cd #{ project_dir(project) } ; #{ command }")
+        system("cd #{project_dir(project)} ; #{command}")
       end
 
       def commands(alias_or_command)
@@ -60,13 +60,13 @@ module Flash
         color   = options[:color]
         project = options[:project]
 
-        say("#{ project }> #{ message }", color)
+        say("#{project}> #{message}", color)
       end
 
       def say(stuff, color)
-        prefix = "\e[38;5;#{ color }m"
+        prefix = "\e[38;5;#{color}m"
         suffix = "\e[0m"
-        system "echo '#{ prefix }#{ stuff }#{ suffix }'"
+        system "echo '#{prefix}#{stuff}#{suffix}'"
       end
 
       def new_color
@@ -74,7 +74,7 @@ module Flash
       end
 
       def project_dir(project)
-        "#{ Dir.pwd }/#{ project }"
+        "#{Dir.pwd}/#{project}"
       end
     end
   end

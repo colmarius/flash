@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'flash/config'
 
-RSpec.describe Flash::Config, :fakefs  do
+RSpec.describe Flash::Config, :fakefs do
   subject { described_class.new }
 
   describe '#initialize' do

@@ -48,7 +48,7 @@ module Flash
       end
 
       def clone_path(project)
-        "#{ base_clone_path }/#{ project }.git"
+        "#{base_clone_path}/#{project}.git"
       end
 
       def base_clone_path
