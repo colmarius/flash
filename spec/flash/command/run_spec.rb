@@ -9,12 +9,14 @@ RSpec.describe Flash::Command::Run, :fakefs do
   describe '#execute' do
     context 'with invalid args' do
       it 'command and group are nil' do
-        @command, @group = [nil, nil]
+        @command = nil
+        @group = nil
         expect { subject.execute }.to raise_error ArgumentError
       end
 
       it 'command and group are empty strings' do
-        @command, @group = ['', '']
+        @command = ''
+        @group = ''
         output = capture_stdout do
           expect { subject.execute }.to raise_error SystemExit
         end

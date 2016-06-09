@@ -1,4 +1,4 @@
-$:.unshift File.expand_path("../lib", __FILE__)
+$LOAD_PATH.unshift File.expand_path('../lib', __FILE__)
 
 require 'flash'
 
@@ -7,7 +7,7 @@ require 'bundler/gem_tasks'
 require 'rspec/core/rake_task'
 require 'rubocop/rake_task'
 
-task :default => [:spec, :rubocop]
+task default: [:spec, :rubocop]
 
 desc 'Run all specs'
 RSpec::Core::RakeTask.new(:spec) do |t|
